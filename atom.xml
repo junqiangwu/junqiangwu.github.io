@@ -38,11 +38,11 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/01/21/README/"/>
-    <id>http://yoursite.com/2019/01/21/README/</id>
-    <published>2019-01-21T01:59:11.887Z</published>
-    <updated>2019-01-21T01:59:11.888Z</updated>
+    <title>2NAS2 (Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README/"/>
+    <id>http://yoursite.com/2013/07/13/README/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:59:11.500Z</updated>
     
     <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
     
@@ -55,6 +55,282 @@
     
     </summary>
     
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS(Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%202/"/>
+    <id>http://yoursite.com/2013/07/13/README的副本 2/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:14:37.572Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture Search)&quot;
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS(Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%203/"/>
+    <id>http://yoursite.com/2013/07/13/README的副本 3/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:14:37.572Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture Search)&quot;
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS(Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%204/"/>
+    <id>http://yoursite.com/2013/07/13/README的副本 4/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:14:37.572Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture Search)&quot;
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS(Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%205/"/>
+    <id>http://yoursite.com/2013/07/13/README的副本 5/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:14:37.572Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture Search)&quot;
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS(Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%2010/"/>
+    <id>http://yoursite.com/2013/07/13/README的副本 10/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:14:37.572Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture Search)&quot;
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS(Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%207/"/>
+    <id>http://yoursite.com/2013/07/13/README的副本 7/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:14:37.572Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture Search)&quot;
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS(Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%209/"/>
+    <id>http://yoursite.com/2013/07/13/README的副本 9/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:14:37.572Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture Search)&quot;
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS(Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%208/"/>
+    <id>http://yoursite.com/2013/07/13/README的副本 8/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:14:37.572Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture Search)&quot;
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS(Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC/"/>
+    <id>http://yoursite.com/2013/07/13/README的副本/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:14:37.572Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture Search)&quot;
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS(Neural Architecture Search)</title>
+    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%206/"/>
+    <id>http://yoursite.com/2013/07/13/README的副本 6/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2019-03-08T17:14:37.572Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul><li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li></ul><p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p><h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul><li>FBNet</li><li>FBNet Based on Se_Resnet_50_Architecture</li></ul><p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p><p><strong>Code:</strong></p><ul><li><code>blocks.py</code>: Define blocks symbols</li><li><code>FBNet.py</code>: Define FBNet Class.</li><li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li><li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li><li><code>util.py</code>: Define some functions.</li><li><code>test.py</code>: Run test.</li><li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li></ul><p><strong>Differences from original paper</strong>: </p><ul><li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li><li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li><li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li><li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li><li>Last conv has kernel size <code>3,3</code></li><li>Use <strong>+</strong> in loss not <strong>*</strong>.</li><li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li></ul><h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure><h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure><p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p><p><em>TODO</em>:</p><ul><li>sample script, for now just save $\theta$</li><li><del>cosine decaying schedule</del></li><li><del>lat in real environment</del></li><li><del>DataParallel implementation</del></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture Search)&quot;
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
     
   </entry>
   
