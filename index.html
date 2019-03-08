@@ -33,7 +33,7 @@
 
 
 
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/GitHub.png">
 
 
 
@@ -174,9 +174,13 @@
                             
                                 <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/junqiangwu" title="GitHub"></a>
                             
                                 <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa CSDN" href="https://blog.csdn.net/junqing_wu" title="CSDN"></a>
                             
                         </ul>
                     </nav>
@@ -252,9 +256,13 @@
                             
                                 <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/junqiangwu" title="GitHub"></a>
                             
                                 <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/junqing_wu" title="CSDN"></a>
                             
                         </ul>
             </nav>
@@ -302,6 +310,91 @@
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-README" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/21/README/" class="article-date">
+      <time datetime="2019-01-21T01:59:11.887Z" itemprop="datePublished">2019-01-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul>
+<li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li>
+</ul>
+<p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p>
+<h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul>
+<li>FBNet</li>
+<li>FBNet Based on Se_Resnet_50_Architecture</li>
+</ul>
+<p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p>
+<p><strong>Code:</strong></p>
+<ul>
+<li><code>blocks.py</code>: Define blocks symbols</li>
+<li><code>FBNet.py</code>: Define FBNet Class.</li>
+<li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li>
+<li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li>
+<li><code>util.py</code>: Define some functions.</li>
+<li><code>test.py</code>: Run test.</li>
+<li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li>
+</ul>
+<p><strong>Differences from original paper</strong>: </p>
+<ul>
+<li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li>
+<li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li>
+<li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li>
+<li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li>
+<li>Last conv has kernel size <code>3,3</code></li>
+<li>Use <strong>+</strong> in loss not <strong>*</strong>.</li>
+<li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li>
+</ul>
+<h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure>
+<h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure>
+<p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p>
+<p><em>TODO</em>:</p>
+<ul>
+<li>sample script, for now just save $\theta$</li>
+<li><del>cosine decaying schedule</del></li>
+<li><del>lat in real environment</del></li>
+<li><del>DataParallel implementation</del></li>
+</ul>
 
       
     </div>
@@ -383,6 +476,10 @@
     </script>
 
 
+    
+
+     
+
 
 
 
@@ -396,9 +493,9 @@
     
         var oOpenInNew = {
             
-            
-            
-            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
             
             
              archives: ".archive-article-title", 
