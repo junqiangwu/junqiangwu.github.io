@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="NAS,">
+  <meta name="keywords" content="Tensorflow,">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="NAS(Neural Architecture Search)FBNet Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture SearchImplementation of FBNet with MXNet  paper address: https://arxiv.org/pdf/1812.">
-<meta name="keywords" content="NAS">
+<meta name="description" content="安装Tensorflow_Object_detection_API 依赖库 1Protobuf 、Python-tk、Pillow 1.0、lxml、tf Slim、Jupyter notebook、Matplotlib、Tensorflow、Cython、cocoapi 具体请参考： https://github.com/tensorflow/models/blob/master/researc">
+<meta name="keywords" content="Tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NAS (Neural Architecture Search)">
-<meta property="og:url" content="http://yoursite.com/2019/03/09/FBNET/index.html">
+<meta property="og:title" content="TF_Object_Detection API 训练自己模型">
+<meta property="og:url" content="http://yoursite.com/2019/03/10/TF-Object-Detection-API-训练自己模型/index.html">
 <meta property="og:site_name" content="JunQW&#39;S BLOG">
-<meta property="og:description" content="NAS(Neural Architecture Search)FBNet Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture SearchImplementation of FBNet with MXNet  paper address: https://arxiv.org/pdf/1812.">
+<meta property="og:description" content="安装Tensorflow_Object_detection_API 依赖库 1Protobuf 、Python-tk、Pillow 1.0、lxml、tf Slim、Jupyter notebook、Matplotlib、Tensorflow、Cython、cocoapi 具体请参考： https://github.com/tensorflow/models/blob/master/researc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-10T05:45:47.378Z">
+<meta property="og:updated_time" content="2019-03-10T06:40:13.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NAS (Neural Architecture Search)">
-<meta name="twitter:description" content="NAS(Neural Architecture Search)FBNet Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture SearchImplementation of FBNet with MXNet  paper address: https://arxiv.org/pdf/1812.">
+<meta name="twitter:title" content="TF_Object_Detection API 训练自己模型">
+<meta name="twitter:description" content="安装Tensorflow_Object_detection_API 依赖库 1Protobuf 、Python-tk、Pillow 1.0、lxml、tf Slim、Jupyter notebook、Matplotlib、Tensorflow、Cython、cocoapi 具体请参考： https://github.com/tensorflow/models/blob/master/researc">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/09/FBNET/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/10/TF-Object-Detection-API-训练自己模型/">
 
 
 
 
 
-  <title>NAS (Neural Architecture Search) | JunQW'S BLOG</title>
+  <title>TF_Object_Detection API 训练自己模型 | JunQW'S BLOG</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/FBNET/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/10/TF-Object-Detection-API-训练自己模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunQW">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NAS (Neural Architecture Search)</h1>
+          <h1 class="post-title" itemprop="name headline">TF_Object_Detection API 训练自己模型</h1>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-09T20:46:25+08:00">
-                2019-03-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-10T14:11:46+08:00">
+                2019-03-10
               </time>
             
 
@@ -328,10 +328,6 @@
             
           </span>
           
-          
-            <i class="fa fa-thumb-tack"></i>
-            <font color="7D26CD">置顶</font>
-            <span class="post-meta-divider">|</span>
           
           
           
@@ -378,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  365
+                  1.4k
                 </span>
               
 
@@ -394,7 +390,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  7
                 </span>
               
             </div>
@@ -415,47 +411,69 @@
       
 
       
-        <h1 id="NAS-Neural-Architecture-Search"><a href="#NAS-Neural-Architecture-Search" class="headerlink" title="NAS(Neural Architecture Search)"></a>NAS(Neural Architecture Search)</h1><h2 id="FBNet"><a href="#FBNet" class="headerlink" title="FBNet"></a>FBNet</h2><ul>
-<li>Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search<br><strong>Implementation of FBNet with MXNet</strong></li>
-</ul>
-<p>paper address: <a href="https://arxiv.org/pdf/1812.03443.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1812.03443.pdf</a></p>
-<h3 id="Implemented-Net"><a href="#Implemented-Net" class="headerlink" title="Implemented Net:"></a>Implemented Net:</h3><ul>
-<li>FBNet</li>
-<li>FBNet Based on Se_Resnet_50_Architecture</li>
-</ul>
-<p>other block_type architecture cound be easily implement by modify fbnet-symbol/block.py</p>
-<p><strong>Code:</strong></p>
+        <p>安装Tensorflow_Object_detection_API 依赖库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Protobuf 、Python-tk、Pillow 1.0、lxml、tf Slim、Jupyter notebook、Matplotlib、Tensorflow、Cython、cocoapi</span><br></pre></td></tr></table></figure>
+<p>具体请参考：</p>
+<p><strong><a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md" target="_blank" rel="noopener">https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md</a></strong></p>
+<p>安装依赖库：(具体可参考官方文档)</p>
+<p>下载源码：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git clone https://github.com/tensorflow/models</span><br><span class="line">sudo apt-get install protobuf-compiler python-pil python-lxml python-tk</span><br><span class="line">sudo pip3 install Cython</span><br><span class="line">sudo pip3 install jupyter</span><br><span class="line">sudo pip3 install matplotlib</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者使用pip安装：</span></span><br><span class="line">sudo pip install Cython</span><br><span class="line">sudo pip install pillow</span><br><span class="line">sudo pip install lxml</span><br><span class="line">sudo pip install jupyter</span><br><span class="line">sudo pip install matplotlib</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果使用COCO作为评价指标的话，需要接入coco的pythonApi，</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/cocodataset/cocoapi.git</span><br><span class="line">cd cocoapi/PythonAPI</span><br><span class="line">make</span><br><span class="line">cp -r pycocotools &lt;path_to_tensorflow&gt;/models/research/</span><br></pre></td></tr></table></figure>
+<h4 id="编译项目"><a href="#编译项目" class="headerlink" title="编译项目"></a>编译项目</h4><p>From tensorflow/models/research/</p>
+<p>首先protoc编译项目，然后添加环境变量 Mac端： ~./bash_profile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">protoc object_detection/protos/*.proto --python_out=.</span><br><span class="line"></span><br><span class="line">export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim</span><br><span class="line"></span><br><span class="line"># 如果protoc版本过低，请对应环境下载 https://link.zhihu.com/?target=https%3A//github.com/google/protobuf/releases</span><br><span class="line"></span><br><span class="line">sudo cp bin/protoc /usr/bin/protoc 再次尝试编译、添加环境</span><br></pre></td></tr></table></figure>
+<p>测试安装Ok：</p>
+<p><code>python3 object_detection/builders/model_builder_test.py</code></p>
+<h2 id="如果返回Ok-则安装成功，运行setup"><a href="#如果返回Ok-则安装成功，运行setup" class="headerlink" title="如果返回Ok 则安装成功，运行setup"></a>如果返回Ok 则安装成功，运行setup</h2><p><code>python3 setup.py install</code></p>
+<p>制作自己的数据集 并使用API传输训练<br>利用labelImag标注数据，生成xml信息，利用Xml-to-csv.py转换成voc的格式，xml-to-csv脚本：</p>
+<p>注意按照自己的文件结构对应修改，<strong>我的结构</strong>：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-train_data/</span><br><span class="line">  --...</span><br><span class="line">-images/</span><br><span class="line">  --test/</span><br><span class="line">    ---testingimages.jpg</span><br><span class="line">    ---image.xml</span><br><span class="line">  --train/</span><br><span class="line">    ---testingimages.jpg</span><br><span class="line">    ---image.xml</span><br><span class="line">  --..yourimages.jpg</span><br><span class="line">-xml_to_csv.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import glob</span><br><span class="line">import pandas as pd</span><br><span class="line">import xml.etree.ElementTree as ET</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def xml_to_csv(path):</span><br><span class="line">    xml_list = []</span><br><span class="line">    for xml_file in glob.glob(path + &apos;/*.xml&apos;):</span><br><span class="line">        tree = ET.parse(xml_file)</span><br><span class="line">        root = tree.getroot()</span><br><span class="line">        for member in root.findall(&apos;object&apos;):</span><br><span class="line">            value = (root.find(&apos;filename&apos;).text,</span><br><span class="line">                     int(root.find(&apos;size&apos;)[0].text),</span><br><span class="line">                     int(root.find(&apos;size&apos;)[1].text),</span><br><span class="line">                     member[0].text,</span><br><span class="line">                     int(member[4][0].text),</span><br><span class="line">                     int(member[4][1].text),</span><br><span class="line">                     int(member[4][2].text),</span><br><span class="line">                     int(member[4][3].text)</span><br><span class="line">                     )</span><br><span class="line">            xml_list.append(value)</span><br><span class="line">    column_name = [&apos;filename&apos;, &apos;width&apos;, &apos;height&apos;, &apos;class&apos;, &apos;xmin&apos;, &apos;ymin&apos;, &apos;xmax&apos;, &apos;ymax&apos;]</span><br><span class="line">    xml_df = pd.DataFrame(xml_list, columns=column_name)</span><br><span class="line">    return xml_df</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    for directory in [&apos;train&apos;,&apos;test&apos;]:</span><br><span class="line">        image_path = os.path.join(os.getcwd(), &apos;images/&#123;&#125;&apos;.format(directory))</span><br><span class="line">        xml_df = xml_to_csv(image_path)</span><br><span class="line">        xml_df.to_csv(&apos;train_data/&#123;&#125;_labels.csv&apos;.format(directory), index=None)</span><br><span class="line">        print(&apos;Successfully converted xml to csv.&apos;)</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+<h3 id="将Csv格式的图片信息转换为tf-record格式，提供API训练"><a href="#将Csv格式的图片信息转换为tf-record格式，提供API训练" class="headerlink" title="将Csv格式的图片信息转换为tf_record格式，提供API训练"></a>将Csv格式的图片信息转换为tf_record格式，提供API训练</h3><blockquote>
+<p>首先将上述的images、data移到model/research/object_detedtion文件夹下：利用generate_tfrecord.py转换格式</p>
+</blockquote>
+<blockquote>
+<p>需要修改 返回的类别和名称 以及文件路径名</p>
+</blockquote>
+<p><code>https://github.com/junqiangwu/My_Tensorflow/blob/master/object-detection/generate_tfrecord.py</code></p>
+<p><strong>From model/research/object_detection/</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from __future__ import division  </span><br><span class="line">from __future__ import print_function  </span><br><span class="line">from __future__ import absolute_import  </span><br><span class="line">  </span><br><span class="line">import os  </span><br><span class="line">import io  </span><br><span class="line">import pandas as pd  </span><br><span class="line">import tensorflow as tf  </span><br><span class="line">  </span><br><span class="line">from PIL import Image  </span><br><span class="line">from object_detection.utils import dataset_util  </span><br><span class="line">from collections import namedtuple, OrderedDict  </span><br><span class="line">  </span><br><span class="line">flags = tf.app.flags  </span><br><span class="line">flags.DEFINE_string(&apos;csv_input&apos;, &apos;&apos;, &apos;Path to the CSV input&apos;)  </span><br><span class="line">flags.DEFINE_string(&apos;output_path&apos;, &apos;&apos;, &apos;Path to output TFRecord&apos;)  </span><br><span class="line">FLAGS = flags.FLAGS  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"># TO-DO replace this with label map  </span><br><span class="line">def class_text_to_int(row_label):  </span><br><span class="line">    if row_label == &apos;macncheese&apos;:  </span><br><span class="line">        return 1  </span><br><span class="line">    else:  </span><br><span class="line">        None  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">def split(df, group):  </span><br><span class="line">    data = namedtuple(&apos;data&apos;, [&apos;filename&apos;, &apos;object&apos;])  </span><br><span class="line">    gb = df.groupby(group)  </span><br><span class="line">    return [data(filename, gb.get_group(x)) for filename, x in zip(gb.groups.keys(), gb.groups)]  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">def create_tf_example(group, path):  </span><br><span class="line">    with tf.gfile.GFile(os.path.join(path, &apos;&#123;&#125;&apos;.format(group.filename)), &apos;rb&apos;) as fid:  </span><br><span class="line">        encoded_jpg = fid.read()  </span><br><span class="line"></span><br><span class="line">    encoded_jpg_io = io.BytesIO(encoded_jpg)  </span><br><span class="line">    image = Image.open(encoded_jpg_io)  </span><br><span class="line">    width, height = image.size  </span><br><span class="line">  </span><br><span class="line">    filename = group.filename.encode(&apos;utf8&apos;)  </span><br><span class="line">    image_format = b&apos;jpg&apos;  </span><br><span class="line">    xmins = []  </span><br><span class="line">    xmaxs = []  </span><br><span class="line">    ymins = []  </span><br><span class="line">    ymaxs = []  </span><br><span class="line">    classes_text = []  </span><br><span class="line">    classes = []  </span><br><span class="line">  </span><br><span class="line">    for index, row in group.object.iterrows():  </span><br><span class="line">        xmins.append(row[&apos;xmin&apos;] / width)  </span><br><span class="line">        xmaxs.append(row[&apos;xmax&apos;] / width)  </span><br><span class="line">        ymins.append(row[&apos;ymin&apos;] / height)  </span><br><span class="line">        ymaxs.append(row[&apos;ymax&apos;] / height)  </span><br><span class="line">        classes_text.append(row[&apos;class&apos;].encode(&apos;utf8&apos;))  </span><br><span class="line">        classes.append(class_text_to_int(row[&apos;class&apos;]))  </span><br><span class="line">  </span><br><span class="line">    tf_example = tf.train.Example(features=tf.train.Features(feature=&#123;  </span><br><span class="line">        &apos;image/height&apos;: dataset_util.int64_feature(height),  </span><br><span class="line">        &apos;image/width&apos;: dataset_util.int64_feature(width),  </span><br><span class="line">        &apos;image/filename&apos;: dataset_util.bytes_feature(filename),  </span><br><span class="line">        &apos;image/source_id&apos;: dataset_util.bytes_feature(filename),  </span><br><span class="line">        &apos;image/encoded&apos;: dataset_util.bytes_feature(encoded_jpg),  </span><br><span class="line">        &apos;image/format&apos;: dataset_util.bytes_feature(image_format),  </span><br><span class="line">        &apos;image/object/bbox/xmin&apos;: dataset_util.float_list_feature(xmins),  </span><br><span class="line">        &apos;image/object/bbox/xmax&apos;: dataset_util.float_list_feature(xmaxs),  </span><br><span class="line">        &apos;image/object/bbox/ymin&apos;: dataset_util.float_list_feature(ymins),  </span><br><span class="line">        &apos;image/object/bbox/ymax&apos;: dataset_util.float_list_feature(ymaxs),  </span><br><span class="line">        &apos;image/object/class/text&apos;: dataset_util.bytes_list_feature(classes_text),  </span><br><span class="line">        &apos;image/object/class/label&apos;: dataset_util.int64_list_feature(classes),  </span><br><span class="line">    &#125;))  </span><br><span class="line">    return tf_example  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">def main(_):  </span><br><span class="line">    writer = tf.python_io.TFRecordWriter(FLAGS.output_path)  </span><br><span class="line">    path = os.path.join(os.getcwd(), &apos;images&apos;)  </span><br><span class="line">    </span><br><span class="line">    examples = pd.read_csv(FLAGS.csv_input)  </span><br><span class="line">    grouped = split(examples, &apos;filename&apos;)  </span><br><span class="line"></span><br><span class="line">    num=0  </span><br><span class="line">    for group in grouped:  </span><br><span class="line">        num+=1  </span><br><span class="line">        tf_example = create_tf_example(group, path)  </span><br><span class="line">        writer.write(tf_example.SerializeToString())  </span><br><span class="line">        if(num%100==0):  #每完成100个转换，打印一次  </span><br><span class="line">            print(num)  </span><br><span class="line">  </span><br><span class="line">    writer.close()  </span><br><span class="line">    output_path = os.path.join(os.getcwd(), FLAGS.output_path)  </span><br><span class="line">    print(&apos;Successfully created the TFRecords: &#123;&#125;&apos;.format(output_path))  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">if __name__ == &apos;__main__&apos;:  </span><br><span class="line">    tf.app.run()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">python3 generate_tfrecord.py --csv_input=train_data/train_labels.csv  --output_path=train.record </span><br><span class="line"></span><br><span class="line">python3 generate_tfrecord.py --csv_input=train_data/test_labels.csv  --output_path=test.record</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>会在object_detection目录下生成两个.record文件，将它移到train_data目录下，train_data目录下包含：两个csv 和 两个 .record</p>
+</blockquote>
+<h2 id="在object-detection目录下"><a href="#在object-detection目录下" class="headerlink" title="在object_detection目录下:"></a>在object_detection目录下:</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-images/</span><br><span class="line"> --test/</span><br><span class="line">  ---testingimages.jpg</span><br><span class="line"> --train/</span><br><span class="line">  ---testingimages.jpg</span><br><span class="line"> --..yourimages.jpg						</span><br><span class="line">-train_data	</span><br><span class="line"> --train_labels.csv</span><br><span class="line"> --test_labels.csv</span><br><span class="line"> --train.record</span><br><span class="line"> --test.record</span><br></pre></td></tr></table></figure>
+<h3 id="下载预训练模型，配置网络结构信息："><a href="#下载预训练模型，配置网络结构信息：" class="headerlink" title="下载预训练模型，配置网络结构信息："></a>下载预训练模型，配置网络结构信息：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.tensorflow.org/models/object_detection/ ssd_mobilenet_v1_coco_11_06_2017.tar.gz</span><br><span class="line"></span><br><span class="line">mkdir training </span><br><span class="line">在training文件夹下编写训练数据标签：object_detection.pbtxt</span><br><span class="line">			item &#123;</span><br><span class="line">				  id: 1</span><br><span class="line">				  name: &apos;macncheese&apos; #物品类别</span><br><span class="line">				 &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>从<code>object_detection/samples/config/ssd_mobilenet_v1_pets.config</code>移到training文件下：并作出修改： </p>
+<p><code>num_class: 1 batch_size: 24 fine_tune_checkpoint: &quot;ssd_mobilenet_v1_coco_11_06_2017/model.ckpt&quot;</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">train_input_reader: &#123;</span><br><span class="line">	    tf_record_input_reader &#123;</span><br><span class="line">		input_path: &quot;train_data/train.record&quot;</span><br><span class="line">		&#125;</span><br><span class="line">		label_map_path: &quot;training/object-detection.pbtxt&quot;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<p>最后在object_detection文件夹下：运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_pets.config</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>train_dir: 训练输出文件的路径 </p>
+</blockquote>
+<blockquote>
+<p>pipeline_config: 网络配置文件的路径</p>
+</blockquote>
+<blockquote>
+<p>测试输出模型的准确性  利用.py 转换 .pb </p>
+</blockquote>
+<p><strong>From model/research/object_detection</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">python3 export_inference_graph.py</span><br><span class="line"> </span><br><span class="line">--input_type image_tensor </span><br><span class="line">--pipeline_config_path training/ssd_mobilenet_v1_pets.config </span><br><span class="line">--trained_checkpoint_prefix training/model.ckpt-388 </span><br><span class="line">--output_directory mac_n_cheese_inference_graph</span><br></pre></td></tr></table></figure>
 <ul>
-<li><code>blocks.py</code>: Define blocks symbols</li>
-<li><code>FBNet.py</code>: Define FBNet Class.</li>
-<li><code>FBNet_SE.py</code>: Define FBNet Architecture  based on Se_resnet_50.</li>
-<li><code>blocks_se.py</code>: Define blocks symbols based on new search space,include [Resnet_50,Se,Group_Conv,Channel_shuffle,Deform_Conv]</li>
-<li><code>util.py</code>: Define some functions.</li>
-<li><code>test.py</code>: Run test.</li>
-<li><code>block_speed_test.py</code>: test block lat in real environment(1080Ti)</li>
+<li>input_type : 保持一致</li>
+<li>pipeline: 网络结构配置图</li>
+<li>train_checkpoint: ckpt模型保存路径 既上面训练路径的设置位置</li>
+<li>out: 输出文件</li>
 </ul>
-<p><strong>Differences from original paper</strong>: </p>
-<ul>
-<li>The last conv layer’s num_filters is repalced by feature_dim specified by paramters</li>
-<li>Use <em>Amsoftmax</em>, <em>Arcface</em> instead of <em>FC</em>, but you can set model_type to <code>softamx</code> to use fc</li>
-<li>Default input shape is <code>3,108,108</code>, so the first conv layer has stride 1 instead of 2.</li>
-<li>Add <code>BN</code> out of blocks, and <strong>no</strong> <code>bn</code> inside blocks.</li>
-<li>Last conv has kernel size <code>3,3</code></li>
-<li>Use <strong>+</strong> in loss not <strong>*</strong>.</li>
-<li>Adding gradient rising stage in cosine decaying schedule. Code in fbnet-symbom/util/CosineDecayScheduler_Grad</li>
-</ul>
-<h4 id="How-to-train"><a href="#How-to-train" class="headerlink" title="How to train:"></a>How to train:</h4><p>If you want to modify the network structure or the learning rate adjustment function, you need to modify the source code,<br>otherwise you can use this command directly:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32</span><br></pre></td></tr></table></figure>
-<h4 id="How-to-retrain"><a href="#How-to-retrain" class="headerlink" title="How to retrain:"></a>How to retrain:</h4><p>When we want to train the large dataset and hope to change learning rate manually, or the machine is suddenly shutdown due to some reason,<br>of course, we definitely hope we can continue to train model with previous trained weights. Then, your can use this cmd:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py --gpu 0,1,2,3,4,5,6  --log-frequence 50 --model-type softmax --batch-size 32 --load-model-path ./model</span><br></pre></td></tr></table></figure>
-<p>This can load the latest model params for retrain,If you want to load the model with specific epoch,<br>you can use <strong> –load-model-path ./model/*.params </strong>,This means you can retrain your model from specific model.</p>
-<p><em>TODO</em>:</p>
-<ul>
-<li>sample script, for now just save $\theta$</li>
-<li><del>cosine decaying schedule</del></li>
-<li><del>lat in real environment</del></li>
-<li><del>DataParallel implementation</del></li>
-</ul>
+<p>####最后利用jupyter notebook加载pb模型进行测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#修改object_detection_tutorial.ipynb</span><br><span class="line"></span><br><span class="line"># What model to download.</span><br><span class="line">MODEL_NAME = &apos;mac_n_cheese_inference_graph&apos;</span><br><span class="line"></span><br><span class="line">#Path to frozen detection graph. This is the actual model that is used for the object detection.</span><br><span class="line">PATH_TO_CKPT = MODEL_NAME + &apos;/frozen_inference_graph.pb&apos;</span><br><span class="line"></span><br><span class="line"># List of the strings that is used to add correct label for each box.</span><br><span class="line">PATH_TO_LABELS = os.path.join(&apos;training&apos;, &apos;object-detection.pbtxt&apos;)</span><br><span class="line"></span><br><span class="line">NUM_CLASSES = 1</span><br><span class="line"></span><br><span class="line">#删除downloand程序，修改加载测试图片的路径，运行即可</span><br></pre></td></tr></table></figure></p>
+<p>所有的配置文件在：</p>
+<p><a href="https://github.com/junqiangwu/My_Tensorflow/tree/master/object-detection" target="_blank" rel="noopener">https://github.com/junqiangwu/My_Tensorflow/tree/master/object-detection</a></p>
 
       
     </div>
@@ -474,7 +492,7 @@
         <div class="post-tags">
           
 
-            <a href="/tags/NAS/" rel="tag"><i class="fa fa-tag"></i> NAS</a>
+            <a href="/tags/Tensorflow/" rel="tag"><i class="fa fa-tag"></i> Tensorflow</a>
           
         </div>
       
@@ -487,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/08/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/03/10/Mxnet2Caffe/" rel="next" title="Mxnet2Caffe">
+                <i class="fa fa-chevron-left"></i> Mxnet2Caffe
               </a>
             
           </div>
@@ -496,10 +514,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/10/Mxnet2Caffe/" rel="prev" title="Mxnet2Caffe">
-                Mxnet2Caffe <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -706,7 +720,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NAS-Neural-Architecture-Search"><span class="nav-number">1.</span> <span class="nav-text">NAS(Neural Architecture Search)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#FBNet"><span class="nav-number">1.1.</span> <span class="nav-text">FBNet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Implemented-Net"><span class="nav-number">1.1.1.</span> <span class="nav-text">Implemented Net:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-train"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">How to train:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-retrain"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">How to retrain:</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译项目"><span class="nav-number">1.</span> <span class="nav-text">编译项目</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#如果返回Ok-则安装成功，运行setup"><span class="nav-number"></span> <span class="nav-text">如果返回Ok 则安装成功，运行setup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将Csv格式的图片信息转换为tf-record格式，提供API训练"><span class="nav-number"></span> <span class="nav-text">将Csv格式的图片信息转换为tf_record格式，提供API训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在object-detection目录下"><span class="nav-number"></span> <span class="nav-text">在object_detection目录下:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载预训练模型，配置网络结构信息："><span class="nav-number"></span> <span class="nav-text">下载预训练模型，配置网络结构信息：</span></a></li></ol></li></div>
             
 
           </div>

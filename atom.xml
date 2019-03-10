@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-10T05:45:29.969Z</updated>
+  <updated>2019-03-10T06:40:13.215Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TF_Object_Detection API 训练自己模型</title>
+    <link href="http://yoursite.com/2019/03/10/TF-Object-Detection-API-%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://yoursite.com/2019/03/10/TF-Object-Detection-API-训练自己模型/</id>
+    <published>2019-03-10T06:11:46.000Z</published>
+    <updated>2019-03-10T06:40:13.215Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;安装Tensorflow_Object_detection_API 依赖库&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="Deep Learning" scheme="http://yoursite.com/categories/Deep-Learning/"/>
+    
+    
+      <category term="Tensorflow" scheme="http://yoursite.com/tags/Tensorflow/"/>
+    
+  </entry>
   
   <entry>
     <title>Mxnet2Caffe</title>
