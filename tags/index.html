@@ -81,14 +81,17 @@
 
 
 
+<meta name="description" content="一直上进的小脑斧~~">
 <meta property="og:type" content="website">
 <meta property="og:title" content="tags">
 <meta property="og:url" content="http://yoursite.com/tags/index.html">
 <meta property="og:site_name" content="JunQW&#39;S BLOG">
+<meta property="og:description" content="一直上进的小脑斧~~">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-08T17:00:04.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tags">
+<meta name="twitter:description" content="一直上进的小脑斧~~">
 
 
 
@@ -161,7 +164,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">一只上进的小脑斧</p>
+        <p class="site-subtitle">不知则问，不能则学！</p>
       
   </div>
 
@@ -317,6 +320,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -347,7 +353,7 @@
               <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="JunQW">
             
               <p class="site-author-name" itemprop="name">JunQW</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">一直上进的小脑斧~~</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -671,6 +677,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Ni8yGTz6Ry2KizuBQRG7pusH-gzGzoHsz',
+        appKey: 'uGlqMJCfILRM9BjRJ0blncv1',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
@@ -1012,5 +1040,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","display":{"position":"right","width":70,"height":100},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
 </html>
