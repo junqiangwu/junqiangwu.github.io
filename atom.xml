@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>JunQW&#39;S BLOG</title>
   
-  <subtitle>上进的学习猿</subtitle>
+  <subtitle>一只上进的小脑斧</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-08T07:55:18.133Z</updated>
+  <updated>2019-03-10T05:42:39.751Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Mxnet2Caffe</title>
+    <link href="http://yoursite.com/2019/03/10/Mxnet2Caffe/"/>
+    <id>http://yoursite.com/2019/03/10/Mxnet2Caffe/</id>
+    <published>2019-03-10T05:36:54.000Z</published>
+    <updated>2019-03-10T05:42:39.751Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Mxnet2Caffe&quot;&gt;&lt;a href=&quot;#Mxnet2Caffe&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Deep Learning" scheme="http://yoursite.com/categories/Deep-Learning/"/>
+    
+    
+      <category term="Mxnet" scheme="http://yoursite.com/tags/Mxnet/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://yoursite.com/2019/03/08/hello-world/"/>
     <id>http://yoursite.com/2019/03/08/hello-world/</id>
     <published>2019-03-08T07:55:18.133Z</published>
-    <updated>2019-03-08T07:55:18.133Z</updated>
+    <updated>2019-03-10T05:44:08.766Z</updated>
     
     <summary type="html">
     
@@ -35,15 +61,19 @@
     
     </summary>
     
+      <category term="Diarys" scheme="http://yoursite.com/categories/Diarys/"/>
+    
+    
+      <category term="Diarys" scheme="http://yoursite.com/tags/Diarys/"/>
     
   </entry>
   
   <entry>
-    <title>2NAS2 (Neural Architecture Search)</title>
+    <title>NAS (Neural Architecture Search)</title>
     <link href="http://yoursite.com/2013/07/13/README/"/>
     <id>http://yoursite.com/2013/07/13/README/</id>
     <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:59:11.500Z</updated>
+    <updated>2019-03-10T05:42:57.626Z</updated>
     
     <summary type="html">
     
@@ -57,292 +87,10 @@
     
     </summary>
     
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+      <category term="Deep Learning" scheme="http://yoursite.com/categories/Deep-Learning/"/>
     
     
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS(Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%202/"/>
-    <id>http://yoursite.com/2013/07/13/README的副本 2/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:14:37.572Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture
-        
-      
-    
-    </summary>
-    
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
-    
-    
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS(Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%203/"/>
-    <id>http://yoursite.com/2013/07/13/README的副本 3/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:14:37.572Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture
-        
-      
-    
-    </summary>
-    
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
-    
-    
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS(Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%204/"/>
-    <id>http://yoursite.com/2013/07/13/README的副本 4/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:14:37.572Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture
-        
-      
-    
-    </summary>
-    
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
-    
-    
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS(Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%205/"/>
-    <id>http://yoursite.com/2013/07/13/README的副本 5/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:14:37.572Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture
-        
-      
-    
-    </summary>
-    
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
-    
-    
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS(Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%2010/"/>
-    <id>http://yoursite.com/2013/07/13/README的副本 10/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:14:37.572Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture
-        
-      
-    
-    </summary>
-    
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
-    
-    
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS(Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%207/"/>
-    <id>http://yoursite.com/2013/07/13/README的副本 7/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:14:37.572Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture
-        
-      
-    
-    </summary>
-    
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
-    
-    
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS(Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%208/"/>
-    <id>http://yoursite.com/2013/07/13/README的副本 8/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:14:37.572Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture
-        
-      
-    
-    </summary>
-    
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
-    
-    
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS(Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%209/"/>
-    <id>http://yoursite.com/2013/07/13/README的副本 9/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:14:37.572Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture
-        
-      
-    
-    </summary>
-    
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
-    
-    
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS(Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC/"/>
-    <id>http://yoursite.com/2013/07/13/README的副本/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:14:37.572Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture
-        
-      
-    
-    </summary>
-    
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
-    
-    
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NAS(Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README%E7%9A%84%E5%89%AF%E6%9C%AC%206/"/>
-    <id>http://yoursite.com/2013/07/13/README的副本 6/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-08T17:14:37.572Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;NAS-Neural-Architecture-Search&quot;&gt;&lt;a href=&quot;#NAS-Neural-Architecture-Search&quot; class=&quot;headerlink&quot; title=&quot;NAS(Neural Architecture
-        
-      
-    
-    </summary>
-    
-      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
-    
-    
-      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
-    
-      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+      <category term="NAS" scheme="http://yoursite.com/tags/NAS/"/>
     
   </entry>
   

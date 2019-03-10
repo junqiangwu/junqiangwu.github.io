@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Mxnet,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="JunQW'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Mxnet2Caffe 将mxnet静态图symbol转换为caffe的prototxt文本，支持大部分op，caffe不需要的op则需要自己添加，再转换，否则会构建失败   将json转换为prototxt 利用caffe的python接口构建网络，将mxnet的参数param迁移到caffe网络中 构建caffe不支持的op 对结果进行比对  json_2_protxt json2protot">
+<meta name="keywords" content="Mxnet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mxnet2Caffe">
+<meta property="og:url" content="http://yoursite.com/2019/03/10/Mxnet2Caffe/index.html">
+<meta property="og:site_name" content="JunQW&#39;S BLOG">
+<meta property="og:description" content="Mxnet2Caffe 将mxnet静态图symbol转换为caffe的prototxt文本，支持大部分op，caffe不需要的op则需要自己添加，再转换，否则会构建失败   将json转换为prototxt 利用caffe的python接口构建网络，将mxnet的参数param迁移到caffe网络中 构建caffe不支持的op 对结果进行比对  json_2_protxt json2protot">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-10T05:42:39.751Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mxnet2Caffe">
+<meta name="twitter:description" content="Mxnet2Caffe 将mxnet静态图symbol转换为caffe的prototxt文本，支持大部分op，caffe不需要的op则需要自己添加，再转换，否则会构建失败   将json转换为prototxt 利用caffe的python接口构建网络，将mxnet的参数param迁移到caffe网络中 构建caffe不支持的op 对结果进行比对  json_2_protxt json2protot">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":4},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/10/Mxnet2Caffe/">
+
+
+
+
+
+  <title>Mxnet2Caffe | JunQW'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <!--Github start-->
+<a href="https://github.com/junqiangwu" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <!--Github start--> 
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JunQW'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一只上进的小脑斧</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/10/Mxnet2Caffe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunQW">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JunQW'S BLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mxnet2Caffe</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-10T13:36:54+08:00">
+                2019-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+          
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Mxnet2Caffe"><a href="#Mxnet2Caffe" class="headerlink" title="Mxnet2Caffe"></a>Mxnet2Caffe</h1><blockquote>
+<p>将mxnet静态图symbol转换为caffe的prototxt文本，支持大部分op，caffe不需要的op则需要自己添加，再转换，否则会构建失败</p>
+</blockquote>
+<ol>
+<li><strong>将json转换为prototxt</strong></li>
+<li><strong>利用caffe的python接口构建网络，将mxnet的参数param迁移到caffe网络中</strong></li>
+<li><strong>构建caffe不支持的op</strong></li>
+<li><strong>对结果进行比对</strong></li>
+</ol>
+<h2 id="json-2-protxt"><a href="#json-2-protxt" class="headerlink" title="json_2_protxt"></a>json_2_protxt</h2><ol>
+<li><code>json2prototxt.py prototxt_basic.py</code>  Read mxnet_json file and converte to prototxt</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// json 格式，只要就是op(操作节点和辅助节点null)  name    attr(参数列表)   inputs(输入列表list)</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"op"</span>: <span class="string">"Activation"</span>, </span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"part_0_stage1_unit1_relu1"</span>, </span><br><span class="line">      <span class="string">"attrs"</span>: &#123;<span class="string">"act_type"</span>: <span class="string">"relu"</span>&#125;, </span><br><span class="line">      <span class="string">"inputs"</span>: [[<span class="number">14</span>, <span class="number">0</span>, <span class="number">0</span>]]</span><br><span class="line">    &#125;, </span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"op"</span>: <span class="string">"null"</span>, </span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"part_0_stage1_unit1_conv1_weight"</span>, </span><br><span class="line">      <span class="string">"attrs"</span>: &#123;</span><br><span class="line">        <span class="string">"kernel"</span>: <span class="string">"(3, 3)"</span>, </span><br><span class="line">        <span class="string">"no_bias"</span>: <span class="string">"True"</span>, </span><br><span class="line">        <span class="string">"num_filter"</span>: <span class="string">"64"</span>, </span><br><span class="line">        <span class="string">"pad"</span>: <span class="string">"(1, 1)"</span>, </span><br><span class="line">        <span class="string">"stride"</span>: <span class="string">"(1, 1)"</span>, </span><br><span class="line">        <span class="string">"workspace"</span>: <span class="string">"256"</span></span><br><span class="line">      &#125;, </span><br><span class="line">      <span class="string">"inputs"</span>: []</span><br><span class="line">    &#125;, </span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"op"</span>: <span class="string">"Convolution"</span>, </span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"part_0_stage1_unit1_conv1"</span>, </span><br><span class="line">      <span class="string">"attrs"</span>: &#123;</span><br><span class="line">        <span class="string">"kernel"</span>: <span class="string">"(3, 3)"</span>, </span><br><span class="line">        <span class="string">"no_bias"</span>: <span class="string">"True"</span>, </span><br><span class="line">        <span class="string">"num_filter"</span>: <span class="string">"64"</span>, </span><br><span class="line">        <span class="string">"pad"</span>: <span class="string">"(1, 1)"</span>, </span><br><span class="line">        <span class="string">"stride"</span>: <span class="string">"(1, 1)"</span>, </span><br><span class="line">        <span class="string">"workspace"</span>: <span class="string">"256"</span></span><br><span class="line">      &#125;, </span><br><span class="line">      <span class="string">"inputs"</span>: [[<span class="number">15</span>, <span class="number">0</span>, <span class="number">0</span>], [<span class="number">16</span>, <span class="number">0</span>, <span class="number">0</span>]]</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<p><strong>读取json文件，并存储相应信息</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(args.mx_json) <span class="keyword">as</span> json_file:    </span><br><span class="line">  jdata = json.load(json_file)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(args.cf_prototxt, <span class="string">"w"</span>) <span class="keyword">as</span> prototxt_file:</span><br><span class="line">  <span class="keyword">for</span> i_node <span class="keyword">in</span> range(<span class="number">0</span>,len(jdata[<span class="string">'nodes'</span>])):</span><br><span class="line">    <span class="comment">#logging.info("i_node[%d],'name' %s" %(i_node,jdata['nodes'][i_node]['name']))</span></span><br><span class="line">  </span><br><span class="line">    node_i  = jdata[<span class="string">'nodes'</span>][i_node]</span><br><span class="line">	<span class="comment"># 如果当前节点是辅助节点或输入节点(只转换操作节点)  则跳过</span></span><br><span class="line">    <span class="keyword">if</span> str(node_i[<span class="string">'op'</span>]) == <span class="string">'null'</span> <span class="keyword">and</span> str(node_i[<span class="string">'name'</span>]) != <span class="string">'data'</span>:</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    logging.info('%d, \top:%s, name:%s -&gt; %s'.%(i_node,node_i['op'].ljust(20),</span></span><br><span class="line"><span class="string">                                        node_i['name'].ljust(30),</span></span><br><span class="line"><span class="string">                                        node_i['name']).ljust(20))</span></span><br><span class="line"><span class="string">                                  '''</span></span><br><span class="line">    <span class="comment">##node[i]个节点  存在的信息 op  name  param  input</span></span><br><span class="line">    info = node_i</span><br><span class="line">    info[<span class="string">'top'</span>] = info[<span class="string">'name'</span>]</span><br><span class="line">    info[<span class="string">'bottom'</span>] = []</span><br><span class="line">    info[<span class="string">'params'</span>] = []</span><br><span class="line">    </span><br><span class="line">	<span class="comment"># 遍历当前节点的输入  存储辅助参数</span></span><br><span class="line">    <span class="keyword">for</span> input_idx_i <span class="keyword">in</span> node_i[<span class="string">'inputs'</span>]:</span><br><span class="line">      <span class="comment"># jdata['nodes'][input_idx_i[0]]  jdana['nodes'][input_index]</span></span><br><span class="line">      input_i = jdata[<span class="string">'nodes'</span>][input_idx_i[<span class="number">0</span>]]</span><br><span class="line">	  <span class="comment">#存储所有输入节点</span></span><br><span class="line">      <span class="keyword">if</span> str(input_i[<span class="string">'op'</span>]) != <span class="string">'null'</span> <span class="keyword">or</span> (str(input_i[<span class="string">'name'</span>]) == <span class="string">'data'</span>):</span><br><span class="line">        info[<span class="string">'bottom'</span>].append(str(input_i[<span class="string">'name'</span>]))</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> str(input_i[<span class="string">'op'</span>]) == <span class="string">'null'</span>:</span><br><span class="line">        info[<span class="string">'params'</span>].append(str(input_i[<span class="string">'name'</span>]))</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> str(input_i[<span class="string">'name'</span>]).startswith(str(node_i[<span class="string">'name'</span>])):</span><br><span class="line">          logging.info(<span class="string">'           use shared weight -&gt; %s'</span>% str(input_i[<span class="string">'name'</span>]))</span><br><span class="line">          info[<span class="string">'share'</span>] = <span class="literal">True</span></span><br><span class="line">    write_node(prototxt_file, info)</span><br></pre></td></tr></table></figure></p>
+<p><strong>写prototxt文件</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 转换 Convolution 节点操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Convolution</span><span class="params">(txt_file, info)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> info[<span class="string">'attrs'</span>][<span class="string">'no_bias'</span>] == <span class="string">'True'</span>:</span><br><span class="line">    bias_term = <span class="string">'false'</span></span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    bias_term = <span class="string">'true'</span>  </span><br><span class="line">  txt_file.write(<span class="string">'layer &#123;\n'</span>)</span><br><span class="line">  txt_file.write(<span class="string">'	bottom: "%s"\n'</span>       % info[<span class="string">'bottom'</span>][<span class="number">0</span>])</span><br><span class="line">  txt_file.write(<span class="string">'	top: "%s"\n'</span>          % info[<span class="string">'top'</span>])</span><br><span class="line">  txt_file.write(<span class="string">'	name: "%s"\n'</span>         % info[<span class="string">'top'</span>])</span><br><span class="line">  txt_file.write(<span class="string">'	type: "Convolution"\n'</span>)</span><br><span class="line">  txt_file.write(<span class="string">'	convolution_param &#123;\n'</span>)</span><br><span class="line">  txt_file.write(<span class="string">'		num_output: %s\n'</span>   % info[<span class="string">'attrs'</span>][<span class="string">'num_filter'</span>])</span><br><span class="line">  txt_file.write(<span class="string">'		kernel_size: %s\n'</span>  % info[<span class="string">'attrs'</span>][<span class="string">'kernel'</span>].split(<span class="string">'('</span>)[<span class="number">1</span>].split(<span class="string">','</span>)[<span class="number">0</span>]) <span class="comment"># TODO</span></span><br><span class="line">  <span class="keyword">if</span> <span class="string">'pad'</span> <span class="keyword">not</span> <span class="keyword">in</span> info[<span class="string">'attrs'</span>]:</span><br><span class="line">    logging.info(<span class="string">'miss Conv_pad, make pad default: 0 '</span>)</span><br><span class="line">    txt_file.write(<span class="string">'		pad: %s\n'</span> % <span class="number">0</span>)  <span class="comment"># TODO</span></span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    txt_file.write(<span class="string">'		pad: %s\n'</span>          % info[<span class="string">'attrs'</span>][<span class="string">'pad'</span>].split(<span class="string">'('</span>)[<span class="number">1</span>].split(<span class="string">','</span>)[<span class="number">0</span>]) <span class="comment"># TODO</span></span><br><span class="line"><span class="comment">#  txt_file.write('		group: %s\n'        % info['attrs']['num_group'])</span></span><br><span class="line">  txt_file.write(<span class="string">'		stride: %s\n'</span>       % info[<span class="string">'attrs'</span>][<span class="string">'stride'</span>].split(<span class="string">'('</span>)[<span class="number">1</span>].split(<span class="string">','</span>)[<span class="number">0</span>])</span><br><span class="line">  txt_file.write(<span class="string">'		bias_term: %s\n'</span>    % bias_term)</span><br><span class="line">  txt_file.write(<span class="string">'	&#125;\n'</span>)</span><br><span class="line">  <span class="keyword">if</span> <span class="string">'share'</span> <span class="keyword">in</span> info.keys() <span class="keyword">and</span> info[<span class="string">'share'</span>]:  </span><br><span class="line">    txt_file.write(<span class="string">'	param &#123;\n'</span>)</span><br><span class="line">    txt_file.write(<span class="string">'	  name: "%s"\n'</span>     % info[<span class="string">'params'</span>][<span class="number">0</span>])</span><br><span class="line">    txt_file.write(<span class="string">'	&#125;\n'</span>)</span><br><span class="line">  txt_file.write(<span class="string">'&#125;\n'</span>)</span><br><span class="line">  txt_file.write(<span class="string">'\n'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># -------根据op操作，完善相应的转换函数-----------</span></span><br><span class="line"><span class="comment"># 目前包含Conv Pool DepthConv BN Act ele_add Concat FC Reshape etc. </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_node</span><span class="params">(txt_file, info)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'label'</span> <span class="keyword">in</span> info[<span class="string">'name'</span>]:</span><br><span class="line">        <span class="keyword">return</span>        </span><br><span class="line">    <span class="keyword">if</span> info[<span class="string">'op'</span>] == <span class="string">'null'</span> <span class="keyword">and</span> info[<span class="string">'name'</span>] == <span class="string">'data'</span>:</span><br><span class="line">        data(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'Convolution'</span>:</span><br><span class="line">        Convolution(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'ChannelwiseConvolution'</span>:</span><br><span class="line">        ChannelwiseConvolution(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'BatchNorm'</span>:</span><br><span class="line">        BatchNorm(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'Activation'</span>:</span><br><span class="line">        Activation(txt_file, info)</span><br><span class="line"><span class="comment">#    elif info['op'] == 'ElementWiseSum':</span></span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'elemwise_add'</span>:</span><br><span class="line">        ElementWiseSum(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'_Plus'</span>:</span><br><span class="line">        ElementWiseSum(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'Concat'</span>:</span><br><span class="line">        Concat(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'Pooling'</span>:</span><br><span class="line"><span class="comment">#        Pooling(txt_file, info)</span></span><br><span class="line">        Pooling_global(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'Flatten'</span>:</span><br><span class="line">        Flatten(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'FullyConnected'</span>:</span><br><span class="line">        FullyConnected(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'SoftmaxOutput'</span>:</span><br><span class="line">        SoftmaxOutput(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'Cast'</span>:</span><br><span class="line">        Cast(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'SliceChannel'</span>:</span><br><span class="line">        SliceChannel(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'L2Normalization'</span>:</span><br><span class="line">        L2Normalization(txt_file, info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'Reshape'</span>:</span><br><span class="line">      Reshape(txt_file,info)</span><br><span class="line">    <span class="keyword">elif</span> info[<span class="string">'op'</span>] == <span class="string">'broadcast_mul'</span>:</span><br><span class="line">      broadcast_mul(txt_file,info)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        logging.warn(<span class="string">"Unknown mxnet op: %s"</span> %info[<span class="string">'op'</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="利用caffe的python接口，构建网络，并迁移mxnet的网络参数"><a href="#利用caffe的python接口，构建网络，并迁移mxnet的网络参数" class="headerlink" title="利用caffe的python接口，构建网络，并迁移mxnet的网络参数"></a>利用caffe的python接口，构建网络，并迁移mxnet的网络参数</h2><p>1.<code>mxnet2caffe.py</code> <strong>Read mxnet_model params_dict and converte to .caffemodel</strong></p>
+<p>转换的时候如果存在caffe不支持的op，<strong>需要自己添加自定义层</strong>，否则在构建网络时，会error，本工程添加了<code>broadcast_mul</code>层caffe添加自定义层的介绍比较多，就跳过了</p>
+<blockquote>
+<p>根据mxnet的API (load) 加载param文件的所有参数字典<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">import</span> caffe</span><br><span class="line"><span class="keyword">except</span> ImportError:</span><br><span class="line">    <span class="keyword">import</span> os, sys</span><br><span class="line">    sys.path.append(<span class="string">"/home/***/codes/mx2caffe/caffe/python/"</span>)</span><br><span class="line">    <span class="keyword">import</span> caffe</span><br><span class="line"><span class="comment">#读取全部param 参数字典    </span></span><br><span class="line">_, arg_params, aux_params = mx.model.load_checkpoint(args.mx_model, args.mx_epoch)</span><br><span class="line">all_keys = arg_params.keys() + aux_params.keys()</span><br><span class="line"><span class="comment"># 利用caffe的python接口，读取刚转换的proto构建网络，</span></span><br><span class="line">net = caffe.Net(args.cf_prototxt, caffe.TRAIN)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i_key,key_i <span class="keyword">in</span> enumerate(all_keys):</span><br><span class="line">  <span class="keyword">try</span>:    </span><br><span class="line">    <span class="keyword">if</span> <span class="string">'data'</span> <span class="keyword">is</span> key_i:</span><br><span class="line">      <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># 在mxnet字典中，存有caffe不需要的后缀，_weight _bias </span></span><br><span class="line">    <span class="comment"># 需要确认caffe的参数保存顺序  [0]是weight  [1]是bias  其它op 类似查看proto结构设计</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="string">'_weight'</span> <span class="keyword">in</span> key_i:</span><br><span class="line">    </span><br><span class="line">      key_caffe = key_i.replace(<span class="string">'_weight'</span>,<span class="string">''</span>)</span><br><span class="line">      net.params[key_caffe][<span class="number">0</span>].data.flat = arg_params[key_i].asnumpy().flat</span><br><span class="line">    <span class="keyword">elif</span> <span class="string">'_bias'</span> <span class="keyword">in</span> key_i:</span><br><span class="line">      key_caffe = key_i.replace(<span class="string">'_bias'</span>,<span class="string">''</span>)</span><br><span class="line">      net.params[key_caffe][<span class="number">1</span>].data.flat = arg_params[key_i].asnumpy().flat</span><br><span class="line">    <span class="keyword">elif</span> <span class="string">'_gamma'</span> <span class="keyword">in</span> key_i:</span><br><span class="line">      key_caffe = key_i.replace(<span class="string">'_gamma'</span>,<span class="string">'_scale'</span>)</span><br><span class="line">      net.params[key_caffe][<span class="number">0</span>].data.flat = arg_params[key_i].asnumpy().flat</span><br><span class="line">    <span class="keyword">elif</span> <span class="string">'_beta'</span> <span class="keyword">in</span> key_i:</span><br><span class="line">      key_caffe = key_i.replace(<span class="string">'_beta'</span>,<span class="string">'_scale'</span>)</span><br><span class="line">      net.params[key_caffe][<span class="number">1</span>].data.flat = arg_params[key_i].asnumpy().flat</span><br><span class="line">    <span class="keyword">elif</span> <span class="string">'_moving_mean'</span> <span class="keyword">in</span> key_i:</span><br><span class="line">      key_caffe = key_i.replace(<span class="string">'_moving_mean'</span>,<span class="string">''</span>)</span><br><span class="line">      net.params[key_caffe][<span class="number">0</span>].data.flat = aux_params[key_i].asnumpy().flat</span><br><span class="line">      net.params[key_caffe][<span class="number">2</span>].data[...] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="string">'_moving_var'</span> <span class="keyword">in</span> key_i:</span><br><span class="line">      key_caffe = key_i.replace(<span class="string">'_moving_var'</span>,<span class="string">''</span>)</span><br><span class="line">      net.params[key_caffe][<span class="number">1</span>].data.flat = aux_params[key_i].asnumpy().flat</span><br><span class="line">      net.params[key_caffe][<span class="number">2</span>].data[...] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      sys.exit(<span class="string">"Warning!  Unknown mxnet:&#123;&#125;"</span>.format(key_i))</span><br><span class="line">  </span><br><span class="line">    print(<span class="string">"% 3d | %s -&gt; %s, initialized."</span> </span><br><span class="line">           %(i_key, key_i.ljust(<span class="number">40</span>), key_caffe.ljust(<span class="number">30</span>)))</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">except</span> KeyError:</span><br><span class="line">    print(<span class="string">"\nWarning!  key error mxnet:&#123;&#125;"</span>.format(key_i))  </span><br><span class="line">      </span><br><span class="line"><span class="comment"># ------------------------------------------</span></span><br><span class="line"><span class="comment"># Finish</span></span><br><span class="line">net.save(args.cf_model)</span><br><span class="line">print(<span class="string">"\n- Finished.\n"</span>)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="对转换结果进行比对确认"><a href="#对转换结果进行比对确认" class="headerlink" title="对转换结果进行比对确认"></a>对转换结果进行比对确认</h2><ol>
+<li><code>mxnet_test.py</code>  <strong>Debug mxnet output and you can compare the result with the converted caffemodel</strong></li>
+</ol>
+<blockquote>
+<p>使用mxnet debug， 打印需要对比的参数，并且输出指定层的结果</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mxnet <span class="keyword">as</span> mx</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_checkpoint_single</span><span class="params">(model, param_path)</span>:</span></span><br><span class="line">    arg_params = &#123;&#125;</span><br><span class="line">    aux_params = &#123;&#125;</span><br><span class="line">    save_dict = mx.nd.load(param_path)</span><br><span class="line">    <span class="keyword">for</span> k, value <span class="keyword">in</span> save_dict.items():</span><br><span class="line">        arg_type, name = k.split(<span class="string">':'</span>, <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> arg_type == <span class="string">'arg'</span>:</span><br><span class="line">            arg_params[name] = value</span><br><span class="line">        <span class="keyword">if</span> arg_type == <span class="string">'aux'</span>:</span><br><span class="line">            aux_params[name] = value</span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    model.set_params(arg_params, aux_params, allow_missing=<span class="literal">False</span>)</span><br><span class="line">    arg_params, aux_params = model.get_params()</span><br><span class="line">    <span class="keyword">return</span> arg_params, aux_params</span><br><span class="line"></span><br><span class="line">full_param_path = <span class="string">'se_resnet34/base-0000.params'</span></span><br><span class="line">fmodel = mx.sym.load(<span class="string">'se_resnet34/base-symbol.json'</span>)</span><br><span class="line"><span class="comment"># 获取mxnet网络的所有layer参数</span></span><br><span class="line">all_layers = fmodel.get_internals()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改这里为需要输出layer的name+output即可指定层输出 ‘name_output’</span></span><br><span class="line">fmodel = all_layers[<span class="string">'flat_output'</span>]</span><br><span class="line">fullmodel = mx.mod.Module(symbol=fmodel,data_names=[<span class="string">'data'</span>],label_names=[])</span><br><span class="line"></span><br><span class="line">img = []</span><br><span class="line">img = get_image_gray(<span class="string">'before_forward.jpg'</span>)</span><br><span class="line">fullmodel.bind(data_shapes=[(<span class="string">'data'</span>, (<span class="number">1</span>, <span class="number">1</span>, <span class="number">108</span>, <span class="number">108</span>))], label_shapes=<span class="literal">None</span>, for_training=<span class="literal">False</span>, force_rebind=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">arg_params, aux_params = load_checkpoint_single(fullmodel, full_param_path)</span><br><span class="line">fullmodel.set_params(arg_params,aux_params)</span><br><span class="line"></span><br><span class="line">file1=open(<span class="string">'se_resnet34.txt'</span>,<span class="string">'w'</span>)</span><br><span class="line">tic=time.time()</span><br><span class="line"></span><br><span class="line">fullmodel.forward(Batch([mx.nd.array(img)]))</span><br><span class="line"></span><br><span class="line">prob = fullmodel.get_outputs()[<span class="number">0</span>].asnumpy()</span><br><span class="line">prob = prob.astype(np.float64)</span><br><span class="line">prob = prob.reshape(<span class="number">-1</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 以特定的格式保存结果</span></span><br><span class="line">np.savetxt(file1,prob,fmt=<span class="string">'%.12f'</span>)</span><br><span class="line"></span><br><span class="line">file1.close()</span><br></pre></td></tr></table></figure>
+<p>然后利用Caffe 加载刚才转换的网络，打印输出，对比结果精度，如果出现问题，则需要逐层排查，本工程在<code>SENet</code>网络上测试正常</p>
+<p><a href="https://github.com/junqiangwu/Mxnet2Caffe-Tensor-RT-SEnet" target="_blank" rel="noopener">工程项目地址</a></p>
+<p> <a href="https://github.com/junqiangwu/Mxnet2Caffe-Tensor-RT-SEnet" target="_blank" rel="noopener">https://github.com/junqiangwu/Mxnet2Caffe-Tensor-RT-SEnet</a></p>
+<h4 id="TODO"><a href="#TODO" class="headerlink" title="TODO:"></a>TODO:</h4><ul>
+<li><del>add caffe_plugin_layer</del></li>
+<li><del>Tensor RT load caffe_model</del></li>
+<li><del>Tensor RT supported Se_Resnet</del></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+
+            <a href="/tags/Mxnet/" rel="tag"><i class="fa fa-tag"></i> Mxnet</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/08/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="JunQW">
+            
+              <p class="site-author-name" itemprop="name">JunQW</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/junqiangwu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="wujunqiang@bupt.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/tianlong1929" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ding-ge-68-17" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/5897792530" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-vk"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://study.163.com/" title="网易云课堂" target="_blank">网易云课堂</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰" target="_blank">廖雪峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://open.163.com/" title="网易公开课" target="_blank">网易公开课</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cs231n.github.io/" title="CS231n" target="_blank">CS231n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cvrr.ucsd.edu/vivachallenge/index.php/traffic-light/traffic-light-detection/" title="Traffic-Light Data" target="_blank">Traffic-Light Data</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.cvlibs.net/datasets/kitti/" title="KITTI" target="_blank">KITTI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://handong1587.github.io/deep_learning/2015/10/09/object-detection.html" title="Object Detection" target="_blank">Object Detection</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mxnet2Caffe"><span class="nav-number">1.</span> <span class="nav-text">Mxnet2Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#json-2-protxt"><span class="nav-number">1.1.</span> <span class="nav-text">json_2_protxt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用caffe的python接口，构建网络，并迁移mxnet的网络参数"><span class="nav-number">1.2.</span> <span class="nav-text">利用caffe的python接口，构建网络，并迁移mxnet的网络参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对转换结果进行比对确认"><span class="nav-number">1.3.</span> <span class="nav-text">对转换结果进行比对确认</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TODO"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">TODO:</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunQW</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">1.9k</span>
+  
+</div>
+
+<!-- 取消底部
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+-->
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
