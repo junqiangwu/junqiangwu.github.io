@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-10T05:42:39.751Z</updated>
+  <updated>2019-03-10T05:45:29.969Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/03/10/Mxnet2Caffe/"/>
     <id>http://yoursite.com/2019/03/10/Mxnet2Caffe/</id>
     <published>2019-03-10T05:36:54.000Z</published>
-    <updated>2019-03-10T05:42:39.751Z</updated>
+    <updated>2019-03-10T05:45:29.969Z</updated>
     
     <summary type="html">
     
@@ -43,37 +43,11 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/03/08/hello-world/"/>
-    <id>http://yoursite.com/2019/03/08/hello-world/</id>
-    <published>2019-03-08T07:55:18.133Z</published>
-    <updated>2019-03-10T05:44:08.766Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Diarys" scheme="http://yoursite.com/categories/Diarys/"/>
-    
-    
-      <category term="Diarys" scheme="http://yoursite.com/tags/Diarys/"/>
-    
-  </entry>
-  
-  <entry>
     <title>NAS (Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2013/07/13/README/"/>
-    <id>http://yoursite.com/2013/07/13/README/</id>
-    <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2019-03-10T05:42:57.626Z</updated>
+    <link href="http://yoursite.com/2019/03/09/FBNET/"/>
+    <id>http://yoursite.com/2019/03/09/FBNET/</id>
+    <published>2019-03-09T12:46:25.000Z</published>
+    <updated>2019-03-10T05:45:47.378Z</updated>
     
     <summary type="html">
     
@@ -91,6 +65,32 @@
     
     
       <category term="NAS" scheme="http://yoursite.com/tags/NAS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2019/03/08/hello-world/"/>
+    <id>http://yoursite.com/2019/03/08/hello-world/</id>
+    <published>2019-03-08T07:55:18.133Z</published>
+    <updated>2019-03-10T05:45:21.266Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Diarys" scheme="http://yoursite.com/categories/Diarys/"/>
+    
+    
+      <category term="Diarys" scheme="http://yoursite.com/tags/Diarys/"/>
     
   </entry>
   
