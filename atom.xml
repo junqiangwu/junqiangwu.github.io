@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-10T06:40:13.215Z</updated>
+  <updated>2019-03-10T12:39:56.947Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Installing PycURL on macOS High Sierra</title>
+    <link href="http://yoursite.com/2019/03/10/Installing%20PycURL%20on%20macOS%20High%20Sierra/"/>
+    <id>http://yoursite.com/2019/03/10/Installing PycURL on macOS High Sierra/</id>
+    <published>2019-03-10T12:35:10.071Z</published>
+    <updated>2019-03-10T12:39:56.947Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Installing-PycURL-on-macOS-High-Sierra&quot;&gt;&lt;a href=&quot;#Installing-PycURL-on-macOS-High-Sierra&quot; class=&quot;headerlink&quot; title=&quot;Installing
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+    
+    
+      <category term="MAC环境配置" scheme="http://yoursite.com/tags/MAC%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>TF_Object_Detection API 训练自己模型</title>
@@ -48,7 +74,7 @@
     <link href="http://yoursite.com/2019/03/10/Mxnet2Caffe/"/>
     <id>http://yoursite.com/2019/03/10/Mxnet2Caffe/</id>
     <published>2019-03-10T05:36:54.000Z</published>
-    <updated>2019-03-10T05:45:29.969Z</updated>
+    <updated>2019-03-10T12:09:04.141Z</updated>
     
     <summary type="html">
     
@@ -74,7 +100,7 @@
     <link href="http://yoursite.com/2019/03/09/FBNET/"/>
     <id>http://yoursite.com/2019/03/09/FBNET/</id>
     <published>2019-03-09T12:46:25.000Z</published>
-    <updated>2019-03-10T05:45:47.378Z</updated>
+    <updated>2019-03-10T12:11:38.855Z</updated>
     
     <summary type="html">
     
