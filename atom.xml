@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-10T13:08:49.675Z</updated>
+  <updated>2019-03-11T03:11:56.440Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>github page + hexo + next + .top</title>
+    <link href="http://yoursite.com/2019/03/11/github-page-hexo-next-top/"/>
+    <id>http://yoursite.com/2019/03/11/github-page-hexo-next-top/</id>
+    <published>2019-03-11T02:39:41.000Z</published>
+    <updated>2019-03-11T03:11:56.440Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;github-page&quot;&gt;&lt;a href=&quot;#github-page&quot; class=&quot;headerlink&quot; title=&quot;github page&quot;&gt;&lt;/a&gt;github page&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;创建一个仓库，命名方式为 账号 +
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+    
+    
+      <category term="MAC环境配置" scheme="http://yoursite.com/tags/MAC%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>Installing PycURL on macOS High Sierra</title>
@@ -118,32 +145,6 @@
     
     
       <category term="NAS" scheme="http://yoursite.com/tags/NAS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/03/08/hello-world/"/>
-    <id>http://yoursite.com/2019/03/08/hello-world/</id>
-    <published>2019-03-08T07:55:18.133Z</published>
-    <updated>2019-03-10T05:45:21.266Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Diarys" scheme="http://yoursite.com/categories/Diarys/"/>
-    
-    
-      <category term="Diarys" scheme="http://yoursite.com/tags/Diarys/"/>
     
   </entry>
   

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[github page + hexo + next + .top]]></title>
+    <url>%2F2019%2F03%2F11%2Fgithub-page-hexo-next-top%2F</url>
+    <content type="text"><![CDATA[github page 创建一个仓库，命名方式为 账号 + .github.io ，例如我的仓库名为：junqiangwu.github.io Hexo - MAC os 安装git 安装node.js 安装hexo node.js直接从官网下载dmg客户端安装node.js官网下载 安装完成以后，使用node -v 和 npm -v 查看版本号，确定安装正确 如果找不到命令node: command not found，则需要在系统环境变量中添加 包的路径MAC的环境变量类似于Linux(左边的先加载):/etc/profile /etc/paths ~/.bash_profile ~/.bash_login ~/.profile ~/.bashrc 打开profile文件，在其中添加1234#默认安装路径在 /usr/local/bin/nodeexport NODE_HOME=&quot;/usr/local&quot; export PATH=$PATH:$NODE_HOME/bin hexo直接命令行安装即可： sudo npm install -g hexo-cli 使用hexo创建本地仓库：12345678# 创建一个blog文件夹mkdir blog# 进入目录cd blog# 初始化目录hexo init# 开启本地服务 # hexo s 即可在localhost:4000 打开hello页面 绑定github page 打开Blog目录，打开站点配置文件 _config.yml ,在deploy添加自己的git仓库地址： 1234# 产生静态网页,每次添加文章之后，都需要这个命令生成静态网页hexo g# 部署到GitHub page上，类似于git pushhexo d 这样就可以通过 name+github.io 地址访问到你的github page Theme Hexo官网：https://hexo.io/themes/里面有特别多的主题可以选择，我在这里选的是next这个主题,效果图 首先clone 下来hexo主题，放到Blog/theme文件里 修改站点配置文件 _config.yml 将里面76行的theme由landscape修改为next 更换新的主题，可能会有一些延迟， 然后就可以通过theme-next的配置文件_config.yml对主题样式进行修改、配置 1234# 新建 分类 和 标签 页面cd ~/bloghexo new page categorieshexo new page tags 具体的主题修改优化配置，可见这个博客，写的很详细：https://zealot.top/设计了头像、背景、评论、缩放等一系列操作 绑定top域名 在仓库里添加CNAME文件 申请一个域名，域名解析 github配置 在仓库里添加一个文件，命名为 CNAME，文件名大写且没有后缀；文件里填写要绑定的域名且不要包含Http://和www 如junqw.top 进入github博客仓库设置(setting)，找到 Custom domain添加域名(junqw.top)后保存即可 域名配置 阿里云购买的域名，这里以阿里云的操作为例，登陆阿里云，依次进入 控制台-万网-域名 找到已购买的域名点击解析按钮，添加两项解析，没试过写ip地址那个，但是这两个解析实测可用 第一项是为了绑定www,注意添加的时候不要忘了最后面的那个&quot;点&quot; 即 junqiangwu.github.io. 这就好了，需要等待一段时间，就可以通过top域名访问你的博客了！]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>MAC环境配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Installing PycURL on macOS High Sierra]]></title>
     <url>%2F2019%2F03%2F10%2FInstalling%20PycURL%20on%20macOS%20High%20Sierra%2F</url>
     <content type="text"><![CDATA[Installing PycURL on macOS High Sierra 需要向服务器推送较大的文件，发现python端有一个pycurl库很好的集成了curl命令，在速度上比urllib快很多，不过在Mac端安装的时候总是提示不兼容： 最后在这里找到了解决办法：https://cscheng.info/2018/01/26/installing-pycurl-on-macos-high-sierra.html import pycurlTraceback (most recent call last): File ““, line 1, in ImportError: pycurl: libcurl link-time ssl backend (openssl) is different from compile-time ssl backend (none/other) 如果你没有安装openssl，请安装：brew install openssl或者：brew uggrade openssl 设置环境变量：If you need to have this software first in your PATH run:echo &#39;export PATH=&quot;/usr/local/opt/openssl/bin:$PATH&quot;&#39; &gt;&gt; ~/.bash_profile 卸载之前安装的pycurlpip3 uninstall pycurl 重新安装：1sudo pip3 install --install-option=&quot;--with-openssl&quot; --install-option=&quot;--openssl-dir=/usr/local/opt/openssl&quot; pycurl]]></content>
@@ -42,17 +53,6 @@
       </categories>
       <tags>
         <tag>NAS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F03%2F08%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-      <categories>
-        <category>Diarys</category>
-      </categories>
-      <tags>
-        <tag>Diarys</tag>
       </tags>
   </entry>
 </search>
