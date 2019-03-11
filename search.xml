@@ -12,6 +12,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[模板类 函数]]></title>
+    <url>%2F2019%2F03%2F11%2F%E6%A8%A1%E6%9D%BF%E7%B1%BB-%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[泛型编程既以一种独立于任何特定类型的方式编写代码，可以实现算法和数据结构的分离;简单来说就是代码不局限于类型，模板就是泛型编程的基础。 模板函数 在 C++ 中，模板分为函数模板和类模板两种。函数模板是用于生成函数的，类模板则是用于生成类的。 在模板参数列表中，typename 和 class 关键词含义相同，可互换使用、同时使用，因为typename是在模板广泛使用之后才引入的，所以很多旧程序在使用class 1234567891011121314# 语法template &lt;typename param1,class param2&gt;ret-type func-name(parameter list)&#123; 函数体；&#125;template &lt;class T&gt;void Swap(T &amp;x, T &amp;y, int size)&#123; # size 非模板变量，直接写在形参表中 T tmp = x; x = y; y = tmp;&#125; 其中T为 (形参)类型参数，既 （形参类型 + 形参名字） 编译器在生成具体函数时，会用具体的类型(int\doubule)对模板中的类型参数(T)进行替换，其他部分则原封不动地保留。 模板实例化(显式/隐式) 编译器由模板自动生成函数的过程称为实例化,由模板实例化而得到的函数称为模板函数 模板实例化时还可以显示指定需要实例化的类型模板函数名&lt;类型1,类型2, ...&gt; 如 Swap&lt;int&gt;(2) 一个程序里面同时出现函数模板和普通函数，并且函数名相同 是正确的,并且普通函数的优先级比函数模板的优先级高， 函数模板是编译时自动生 成各种类型的函数实例，如同内联函数，编译时其实现必须可见，一般其实现应该包含在头文件中。 模板函数的声明定义要放在头文件中，不可以分开放在.h和.cpp中。 同样，在一个类中将一个成员函数定义为函数模板时也是要遵从这个规则：实现要放在头文件里。 类模板123456789template &lt;class type&gt; class class-name &#123; // 主体&#125;template &lt;class type&gt;void class-name&lt;type&gt;::func (type a) &#123; // 函数主体&#125; 实例 1234567891011121314151617181920template &lt;class T&gt;class Stack &#123; private: vector&lt;T&gt; elems; // 元素 public: void push(T const&amp;); // 入栈 void pop(); // 出栈 T top() const; // 返回栈顶元素 bool empty() const&#123; // 如果为空则返回真。 return elems.empty(); &#125; &#125;;template &lt;class T&gt;void Stack&lt;T&gt;::push (T const&amp; elem) &#123; // 追加传入元素的副本 elems.push_back(elem); &#125;]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[github page + hexo + next + .top]]></title>
     <url>%2F2019%2F03%2F11%2Fgithub-page-hexo-next-top%2F</url>
     <content type="text"><![CDATA[github page 创建一个仓库，命名方式为 账号 + .github.io ，例如我的仓库名为：junqiangwu.github.io Hexo - MAC os 安装git 安装node.js 安装hexo node.js直接从官网下载dmg客户端安装node.js官网下载 安装完成以后，使用node -v 和 npm -v 查看版本号，确定安装正确 如果找不到命令node: command not found，则需要在系统环境变量中添加 包的路径MAC的环境变量类似于Linux(左边的先加载):/etc/profile /etc/paths ~/.bash_profile ~/.bash_login ~/.profile ~/.bashrc 打开profile文件，在其中添加1234#默认安装路径在 /usr/local/bin/nodeexport NODE_HOME=&quot;/usr/local&quot; export PATH=$PATH:$NODE_HOME/bin hexo直接命令行安装即可： sudo npm install -g hexo-cli 使用hexo创建本地仓库：12345678# 创建一个blog文件夹mkdir blog# 进入目录cd blog# 初始化目录hexo init# 开启本地服务 # hexo s 即可在localhost:4000 打开hello页面 绑定github page 打开Blog目录，打开站点配置文件 _config.yml ,在deploy添加自己的git仓库地址： 1234# 产生静态网页,每次添加文章之后，都需要这个命令生成静态网页hexo g# 部署到GitHub page上，类似于git pushhexo d 这样就可以通过 name+github.io 地址访问到你的github page Theme Hexo官网：https://hexo.io/themes/里面有特别多的主题可以选择，我在这里选的是next这个主题,效果图 首先clone 下来hexo主题，放到Blog/theme文件里 修改站点配置文件 _config.yml 将里面76行的theme由landscape修改为next 更换新的主题，可能会有一些延迟， 然后就可以通过theme-next的配置文件_config.yml对主题样式进行修改、配置 1234# 新建 分类 和 标签 页面cd ~/bloghexo new page categorieshexo new page tags 具体的主题修改优化配置，可见这个博客，写的很详细：https://zealot.top/设计了头像、背景、评论、缩放等一系列操作 绑定top域名 在仓库里添加CNAME文件 申请一个域名，域名解析 github配置 在仓库里添加一个文件，命名为 CNAME，文件名大写且没有后缀；文件里填写要绑定的域名且不要包含Http://和www 如junqw.top 进入github博客仓库设置(setting)，找到 Custom domain添加域名(junqw.top)后保存即可 域名配置 阿里云购买的域名，这里以阿里云的操作为例，登陆阿里云，依次进入 控制台-万网-域名 找到已购买的域名点击解析按钮，添加两项解析，没试过写ip地址那个，但是这两个解析实测可用 第一项是为了绑定www,注意添加的时候不要忘了最后面的那个&quot;点&quot; 即 junqiangwu.github.io. 这就好了，需要等待一段时间，就可以通过top域名访问你的博客了！]]></content>
