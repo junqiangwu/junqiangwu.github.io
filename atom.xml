@@ -5,9 +5,9 @@
   <subtitle>不知则问，不能则学！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://junqw.top/"/>
   <updated>2019-03-11T12:50:21.750Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://junqw.top/</id>
   
   <author>
     <name>JunQW</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>分离式编译</title>
-    <link href="http://yoursite.com/2019/03/11/%E5%88%86%E7%A6%BB%E5%BC%8F%E7%BC%96%E8%AF%91/"/>
-    <id>http://yoursite.com/2019/03/11/分离式编译/</id>
+    <link href="http://junqw.top/2019/03/11/%E5%88%86%E7%A6%BB%E5%BC%8F%E7%BC%96%E8%AF%91/"/>
+    <id>http://junqw.top/2019/03/11/分离式编译/</id>
     <published>2019-03-11T09:05:56.000Z</published>
     <updated>2019-03-11T12:50:21.750Z</updated>
     
@@ -35,17 +35,17 @@
     
     </summary>
     
-      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+      <category term="C++" scheme="http://junqw.top/categories/C/"/>
     
     
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+      <category term="C++" scheme="http://junqw.top/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>模板类 函数</title>
-    <link href="http://yoursite.com/2019/03/11/%E6%A8%A1%E6%9D%BF%E7%B1%BB-%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2019/03/11/模板类-函数/</id>
+    <link href="http://junqw.top/2019/03/11/%E6%A8%A1%E6%9D%BF%E7%B1%BB-%E5%87%BD%E6%95%B0/"/>
+    <id>http://junqw.top/2019/03/11/模板类-函数/</id>
     <published>2019-03-11T06:55:06.000Z</published>
     <updated>2019-03-11T12:52:18.213Z</updated>
     
@@ -61,17 +61,17 @@
     
     </summary>
     
-      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+      <category term="C++" scheme="http://junqw.top/categories/C/"/>
     
     
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+      <category term="C++" scheme="http://junqw.top/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>github page + hexo + next + .top</title>
-    <link href="http://yoursite.com/2019/03/11/github-page-hexo-next-top/"/>
-    <id>http://yoursite.com/2019/03/11/github-page-hexo-next-top/</id>
+    <link href="http://junqw.top/2019/03/11/github-page-hexo-next-top/"/>
+    <id>http://junqw.top/2019/03/11/github-page-hexo-next-top/</id>
     <published>2019-03-11T02:39:41.000Z</published>
     <updated>2019-03-11T03:11:56.440Z</updated>
     
@@ -88,17 +88,17 @@
     
     </summary>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://junqw.top/categories/Python/"/>
     
     
-      <category term="MAC环境配置" scheme="http://yoursite.com/tags/MAC%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+      <category term="MAC环境配置" scheme="http://junqw.top/tags/MAC%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
   <entry>
     <title>Installing PycURL on macOS High Sierra</title>
-    <link href="http://yoursite.com/2019/03/10/Installing%20PycURL%20on%20macOS%20High%20Sierra/"/>
-    <id>http://yoursite.com/2019/03/10/Installing PycURL on macOS High Sierra/</id>
+    <link href="http://junqw.top/2019/03/10/Installing%20PycURL%20on%20macOS%20High%20Sierra/"/>
+    <id>http://junqw.top/2019/03/10/Installing PycURL on macOS High Sierra/</id>
     <published>2019-03-10T12:35:10.071Z</published>
     <updated>2019-03-10T13:08:49.675Z</updated>
     
@@ -114,17 +114,17 @@
     
     </summary>
     
-      <category term="Python" scheme="http://yoursite.com/categories/Python/"/>
+      <category term="Python" scheme="http://junqw.top/categories/Python/"/>
     
     
-      <category term="MAC环境配置" scheme="http://yoursite.com/tags/MAC%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+      <category term="MAC环境配置" scheme="http://junqw.top/tags/MAC%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
   <entry>
     <title>TF_Object_Detection API 训练自己模型</title>
-    <link href="http://yoursite.com/2019/03/10/TF-Object-Detection-API-%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E6%A8%A1%E5%9E%8B/"/>
-    <id>http://yoursite.com/2019/03/10/TF-Object-Detection-API-训练自己模型/</id>
+    <link href="http://junqw.top/2019/03/10/TF-Object-Detection-API-%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://junqw.top/2019/03/10/TF-Object-Detection-API-训练自己模型/</id>
     <published>2019-03-10T06:11:46.000Z</published>
     <updated>2019-03-10T06:40:13.215Z</updated>
     
@@ -141,17 +141,17 @@
     
     </summary>
     
-      <category term="Deep Learning" scheme="http://yoursite.com/categories/Deep-Learning/"/>
+      <category term="Deep Learning" scheme="http://junqw.top/categories/Deep-Learning/"/>
     
     
-      <category term="Tensorflow" scheme="http://yoursite.com/tags/Tensorflow/"/>
+      <category term="Tensorflow" scheme="http://junqw.top/tags/Tensorflow/"/>
     
   </entry>
   
   <entry>
     <title>Mxnet2Caffe</title>
-    <link href="http://yoursite.com/2019/03/10/Mxnet2Caffe/"/>
-    <id>http://yoursite.com/2019/03/10/Mxnet2Caffe/</id>
+    <link href="http://junqw.top/2019/03/10/Mxnet2Caffe/"/>
+    <id>http://junqw.top/2019/03/10/Mxnet2Caffe/</id>
     <published>2019-03-10T05:36:54.000Z</published>
     <updated>2019-03-10T12:09:04.141Z</updated>
     
@@ -167,17 +167,17 @@
     
     </summary>
     
-      <category term="Deep Learning" scheme="http://yoursite.com/categories/Deep-Learning/"/>
+      <category term="Deep Learning" scheme="http://junqw.top/categories/Deep-Learning/"/>
     
     
-      <category term="Mxnet" scheme="http://yoursite.com/tags/Mxnet/"/>
+      <category term="Mxnet" scheme="http://junqw.top/tags/Mxnet/"/>
     
   </entry>
   
   <entry>
     <title>NAS (Neural Architecture Search)</title>
-    <link href="http://yoursite.com/2019/03/09/FBNET/"/>
-    <id>http://yoursite.com/2019/03/09/FBNET/</id>
+    <link href="http://junqw.top/2019/03/09/FBNET/"/>
+    <id>http://junqw.top/2019/03/09/FBNET/</id>
     <published>2019-03-09T12:46:25.000Z</published>
     <updated>2019-03-10T13:46:53.970Z</updated>
     
@@ -193,10 +193,10 @@
     
     </summary>
     
-      <category term="Deep Learning" scheme="http://yoursite.com/categories/Deep-Learning/"/>
+      <category term="Deep Learning" scheme="http://junqw.top/categories/Deep-Learning/"/>
     
     
-      <category term="NAS" scheme="http://yoursite.com/tags/NAS/"/>
+      <category term="NAS" scheme="http://junqw.top/tags/NAS/"/>
     
   </entry>
   
