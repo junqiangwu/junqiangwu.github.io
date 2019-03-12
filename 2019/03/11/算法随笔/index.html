@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="JunQW&#39;S BLOG">
 <meta property="og:description" content="##算法随笔 1.原地删除重复的数字 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。  12345给定 nums = [0,0,1,1,1,2,2,3,3,4],函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-12T03:14:47.320Z">
+<meta property="og:updated_time" content="2019-03-12T15:27:16.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法随笔">
 <meta name="twitter:description" content="##算法随笔 1.原地删除重复的数字 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。  12345给定 nums = [0,0,1,1,1,2,2,3,3,4],函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3,">
@@ -410,7 +410,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.9k
+                  2.5k
                 </span>
               
 
@@ -426,7 +426,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  11
                 </span>
               
             
@@ -526,6 +526,34 @@
 <p>使用一个索引标志，遍历一次数组，遍历的同时将非0的元素交换到标志索引处，最后将剩余位置填充0即可！</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void move_zero(int a[],int size)&#123;</span><br><span class="line">    int i=0;</span><br><span class="line"></span><br><span class="line">    for(int x=0;x&lt;size;x++)&#123;</span><br><span class="line">        if(a[x]!=0) &#123;</span><br><span class="line">            a[i] = a[x];</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(;i&lt;size;i++)&#123;</span><br><span class="line">        a[i]=0;  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="9-反转字符串"><a href="#9-反转字符串" class="headerlink" title="9.反转字符串"></a>9.反转字符串</h3><blockquote>
+<p>输入: “A man, a plan, a canal: Panama”<br>输出: “amanaP :lanac a ,nalp a ,nam A”</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void reverseString(string&amp; str)&#123;</span><br><span class="line">    int i=0,j=str.size()-1;</span><br><span class="line">    while(i&lt;j)&#123;</span><br><span class="line">//      swap(str[i++],str[j--]);</span><br><span class="line">        char s = str[i];</span><br><span class="line">        str[i] = str[j];</span><br><span class="line">        str[j] = s;</span><br><span class="line">        i++;j--;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n str: %s \n&quot;,str.c_str());</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="10-字母异位词"><a href="#10-字母异位词" class="headerlink" title="10.字母异位词"></a>10.字母异位词</h3><blockquote>
+<p>利用了字母易位词即为各个字母的数目相同，而顺序不一致。我们从另外一个角度思考，字母一共有多少个？很明显，只有26个（只考虑小写字母）。那么，我们可以为字符串s1和s2分别设置26个计数器，然后判断这对应位置的计数是否相等，如果对应计数完全相等，则为字母易位词</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;anagram&quot;, t = &quot;nagaram&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p><strong>实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">bool isAnagram(string s, string t) &#123;</span><br><span class="line">    if( s.size() != t.size()) return false;</span><br><span class="line">    </span><br><span class="line">    int cnt1[26],cnt2[26];</span><br><span class="line">    memset(cnt1,0,26* sizeof(int));</span><br><span class="line">    memset(cnt2,0,26* sizeof(int));</span><br><span class="line">    </span><br><span class="line">    for(int i=0;i&lt;s.size();i++)&#123;</span><br><span class="line">        cnt1[s[i]-&apos;a&apos;]++;</span><br><span class="line">        cnt2[s[i]-&apos;a&apos;]++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;26;i++)&#123;</span><br><span class="line">        if(cnt1[i] != cnt2[i])</span><br><span class="line">            return false;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="11-回文字符串"><a href="#11-回文字符串" class="headerlink" title="11.回文字符串"></a>11.回文字符串</h3><p>/<strong><em>**</em></strong>11. 回文字符串  <strong><strong><strong>**</strong></strong></strong>/</p>
+<p>bool isPalindrome(const string&amp; s) {</p>
+<pre><code>int star =0,end = s.size()-1;
+
+while(star&gt;end){
+    if(toupper(s[star] == s[end]))
+    {
+        star++; end--;
+    }else{
+        return false;
+    }
+}
+return true,
+</code></pre><p>}</p>
+<h3 id="12-查找字符串数组最长前缀"><a href="#12-查找字符串数组最长前缀" class="headerlink" title="12.查找字符串数组最长前缀"></a>12.查找字符串数组最长前缀</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line">输入: [“flower”,”flow”,”flight”] 输出: “fl” 示例 2:</span><br><span class="line">输入: [“dog”,”racecar”,”car”] 输出: “” 解释: 输入不存在公共前缀。 说明:</span><br><span class="line"># 所有输入只包含小写字母 a-z</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">string longestCommonPrefix(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">        string res;</span><br><span class="line">        if(strs.empty())&#123;</span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;strs[0].size();i++)&#123;</span><br><span class="line">            char c=strs[0][i];</span><br><span class="line">            for(int j=1;j&lt;strs.size();j++)&#123;</span><br><span class="line">                if(i&gt;strs[j].size()-1||c!=strs[j][i])&#123;</span><br><span class="line">                    return res;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            res.push_back(c);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="13-合并两个有序链表"><a href="#13-合并两个有序链表" class="headerlink" title="13.合并两个有序链表"></a>13.合并两个有序链表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</span><br><span class="line">例：</span><br><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
+<p><strong>实现</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">ListNode* Merge_two(ListNode *l,ListNode* r)&#123;</span><br><span class="line">    if(l-&gt;next==NULL &amp;&amp; r-&gt;next==NULL) return NULL;</span><br><span class="line"></span><br><span class="line">    ListNode dumpy(0);</span><br><span class="line">    ListNode* tmp=&amp;dumpy;</span><br><span class="line"></span><br><span class="line">    while(l-&gt;next!=NULL &amp;&amp; r-&gt;next!=NULL)&#123;</span><br><span class="line">        if(l-&gt;val &gt; r-&gt;val)&#123;</span><br><span class="line">            tmp-&gt;next = r;</span><br><span class="line">            r = r-&gt;next;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            tmp-&gt;next = l;</span><br><span class="line">            l = l-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        tmp = tmp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(l!=NULL)&#123;</span><br><span class="line">        tmp-&gt;next=l;</span><br><span class="line">    &#125;</span><br><span class="line">    if(r!=NULL)&#123;</span><br><span class="line">        tmp-&gt;next=r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return tmp.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -584,6 +612,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/12/STL/" rel="prev" title="STL">
+                STL <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -665,7 +697,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -687,7 +719,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -797,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-原地删除重复的数字"><span class="nav-number">1.</span> <span class="nav-text">1.原地删除重复的数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数组中出现次数超过一半的元素"><span class="nav-number">2.</span> <span class="nav-text">2.数组中出现次数超过一半的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法1"><span class="nav-number">2.1.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解法2"><span class="nav-number">2.2.</span> <span class="nav-text">解法2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-将数值向右移动K个位置-非负数"><span class="nav-number">3.</span> <span class="nav-text">3.将数值向右移动K个位置(非负数)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法1-1"><span class="nav-number">3.1.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解法2-1"><span class="nav-number">3.2.</span> <span class="nav-text">解法2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-判断重复数字"><span class="nav-number">4.</span> <span class="nav-text">4.判断重复数字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变形2"><span class="nav-number">4.1.</span> <span class="nav-text">变形2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-找出只出现一次的元素"><span class="nav-number">5.</span> <span class="nav-text">5.找出只出现一次的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法1-2"><span class="nav-number">5.1.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解法2-2"><span class="nav-number">5.2.</span> <span class="nav-text">解法2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-求数组的交集"><span class="nav-number">6.</span> <span class="nav-text">6.求数组的交集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法1-3"><span class="nav-number">6.1.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排序数组，找交集"><span class="nav-number">6.2.</span> <span class="nav-text">排序数组，找交集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Plus-One-加1"><span class="nav-number">7.</span> <span class="nav-text">7. Plus One 加1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-移动所有的0到末尾"><span class="nav-number">8.</span> <span class="nav-text">8. 移动所有的0到末尾</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-原地删除重复的数字"><span class="nav-number">1.</span> <span class="nav-text">1.原地删除重复的数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数组中出现次数超过一半的元素"><span class="nav-number">2.</span> <span class="nav-text">2.数组中出现次数超过一半的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法1"><span class="nav-number">2.1.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解法2"><span class="nav-number">2.2.</span> <span class="nav-text">解法2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-将数值向右移动K个位置-非负数"><span class="nav-number">3.</span> <span class="nav-text">3.将数值向右移动K个位置(非负数)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法1-1"><span class="nav-number">3.1.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解法2-1"><span class="nav-number">3.2.</span> <span class="nav-text">解法2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-判断重复数字"><span class="nav-number">4.</span> <span class="nav-text">4.判断重复数字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变形2"><span class="nav-number">4.1.</span> <span class="nav-text">变形2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-找出只出现一次的元素"><span class="nav-number">5.</span> <span class="nav-text">5.找出只出现一次的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法1-2"><span class="nav-number">5.1.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解法2-2"><span class="nav-number">5.2.</span> <span class="nav-text">解法2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-求数组的交集"><span class="nav-number">6.</span> <span class="nav-text">6.求数组的交集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法1-3"><span class="nav-number">6.1.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排序数组，找交集"><span class="nav-number">6.2.</span> <span class="nav-text">排序数组，找交集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Plus-One-加1"><span class="nav-number">7.</span> <span class="nav-text">7. Plus One 加1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-移动所有的0到末尾"><span class="nav-number">8.</span> <span class="nav-text">8. 移动所有的0到末尾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-反转字符串"><span class="nav-number">9.</span> <span class="nav-text">9.反转字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-字母异位词"><span class="nav-number">10.</span> <span class="nav-text">10.字母异位词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-回文字符串"><span class="nav-number">11.</span> <span class="nav-text">11.回文字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-查找字符串数组最长前缀"><span class="nav-number">12.</span> <span class="nav-text">12.查找字符串数组最长前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-合并两个有序链表"><span class="nav-number">13.</span> <span class="nav-text">13.合并两个有序链表</span></a></li></ol></div>
             
 
           </div>
@@ -838,7 +870,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.7k</span>
+    <span title="Site words total count">8.3k</span>
   
 </div>
 

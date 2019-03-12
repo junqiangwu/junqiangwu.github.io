@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.junqw.top/"/>
-  <updated>2019-03-12T03:14:47.320Z</updated>
+  <updated>2019-03-12T05:16:58.252Z</updated>
   <id>http://www.junqw.top/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>STL</title>
+    <link href="http://www.junqw.top/2019/03/12/STL/"/>
+    <id>http://www.junqw.top/2019/03/12/STL/</id>
+    <published>2019-03-12T05:15:11.000Z</published>
+    <updated>2019-03-12T05:16:58.252Z</updated>
+    
+    <summary type="html">
+    
+      STL库的介绍
+    
+    </summary>
+    
+      <category term="C++" scheme="http://www.junqw.top/categories/C/"/>
+    
+    
+      <category term="STL" scheme="http://www.junqw.top/tags/STL/"/>
+    
+      <category term="C++" scheme="http://www.junqw.top/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>算法随笔</title>
     <link href="http://www.junqw.top/2019/03/11/%E7%AE%97%E6%B3%95%E9%9A%8F%E7%AC%94/"/>
     <id>http://www.junqw.top/2019/03/11/算法随笔/</id>
     <published>2019-03-11T14:50:47.000Z</published>
-    <updated>2019-03-12T03:14:47.320Z</updated>
+    <updated>2019-03-12T15:27:16.597Z</updated>
     
     <summary type="html">
     
