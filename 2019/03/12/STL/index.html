@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="JunQW&#39;S BLOG">
 <meta property="og:description" content="STL库的介绍">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T08:50:17.353Z">
+<meta property="og:updated_time" content="2019-03-22T02:36:12.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL">
 <meta name="twitter:description" content="STL库的介绍">
@@ -414,7 +414,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1
+                  406
                 </span>
               
 
@@ -455,7 +455,20 @@
       
 
       
-        <h1 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h1><h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h1 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h1><h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1>
+        <h1 id="C-序列式容器"><a href="#C-序列式容器" class="headerlink" title="C++序列式容器"></a>C++序列式容器</h1><ul>
+<li>array&lt;T,N&gt;(数组容器)是一个长度固定的序列，有N个T类型的对象，不能增加或删除元素</li>
+<li>vector<t>(向量容器)是一个长度可变的序列，用来存放 T 类型的对象。必要时，可以自动增加容量，但只能在序列的末尾高效地增加或删除元素</t></li>
+<li>deque<t>(双向队列容器)是一个长度可变的、可以自动增长的序列，在序列的两端都不能高效地增加或删除元素</t></li>
+<li>list<t>(链表容器)是一个长度可变的、由 T 类型对象组成的序列，它以双向链表的形式组织元素，在这个序列的任何地方都可以高效地增加或删除元素。</t></li>
+<li>forward list<t>(正向链表容器)它以单链表的形式组织元素，是一类比链表容器快、更节省内存的容器，但是它内部的元素只能从第一个元素开始访问</t></li>
+</ul>
+<h1 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h1><blockquote>
+<p>vector<t> 容器可以方便、灵活地代替数组array。在大多数时候，都可以用vector<t> 代替数组存放元素,vector<t> 在扩展容量,以及在序列内部删除或添加元素时会产生一些开销；但大多数情况下,代码不会明显变慢.</t></t></t></p>
+</blockquote>
+<h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><blockquote>
+<p>在关联容器中，对象的位置取决于和它关联的键的值。键可以是基本类型，也可以是类类型。字符串经常被用来作为键，如果想要保存姓名和地址的记录，就可以这么使用</p>
+</blockquote>
+<h1 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h1><h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1>
       
     </div>
     
@@ -601,7 +614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -623,7 +636,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -733,7 +746,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vector"><span class="nav-number">1.</span> <span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List"><span class="nav-number">2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String"><span class="nav-number">4.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash"><span class="nav-number">5.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set"><span class="nav-number">6.</span> <span class="nav-text">Set</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-序列式容器"><span class="nav-number">1.</span> <span class="nav-text">C++序列式容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vector"><span class="nav-number">2.</span> <span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String"><span class="nav-number">4.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map"><span class="nav-number">5.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash"><span class="nav-number">6.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set"><span class="nav-number">7.</span> <span class="nav-text">Set</span></a></li></ol></div>
             
 
           </div>
@@ -774,7 +787,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.1k</span>
+    <span title="Site words total count">12.6k</span>
   
 </div>
 

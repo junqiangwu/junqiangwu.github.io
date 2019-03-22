@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15531610707805.jpg">
 <meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15531730437721.jpg">
-<meta property="og:updated_time" content="2019-03-21T14:41:30.291Z">
+<meta property="og:updated_time" content="2019-03-22T08:17:16.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="face++ 面经">
 <meta name="twitter:description" content="mxnet2caffe 以及适配Tensor RT 遇到的问题 mxnet和caffe的pooling操作，在取整细节上存在不同，mxnet是下取整，而caffe是上取整，通过逐层debug确定问题源,解决在Tensor RT引擎上重新实现pooling层，替换存在取整问题的pooling层 在读取mxnet的json文件构建caffe_net时，存在不支持的op，需要自己添加相应的层实现，分别添">
@@ -327,6 +327,10 @@
     </span>
 
     
+            <i class="fa fa-thumb-tack"></i>
+            <font color="7D26CD">置顶</font>
+            <span class="post-meta-divider">|</span>
+    
 
     
       <header class="post-header">
@@ -413,7 +417,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  740
+                  873
                 </span>
               
 
@@ -429,7 +433,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             
@@ -479,6 +483,12 @@
 <li>BN操作的公式  以及 可学习参数和相应的作用</li>
 <li>BN归一化的维度，以及 归一化公式</li>
 </ol>
+<blockquote>
+<p>min_max_normalization   需要求的数据的最大/小值，x^ = x- x_min/(x_max-x_min)</p>
+</blockquote>
+<blockquote>
+<p>zero_mean normalization 需要求的原数据的均值和方差   x^ = (x-u)/(α^2)<br>经过处理的数据近似正态分布，所以一般添加斜率和偏置，丰富数据的特征</p>
+</blockquote>
 <h3 id="优化器的公式推导-及-优劣性"><a href="#优化器的公式推导-及-优劣性" class="headerlink" title="优化器的公式推导 及 优劣性"></a>优化器的公式推导 及 优劣性</h3><ol>
 <li>SGD的公式，其中moment惯量的作用</li>
 <li>adam的公式，当时没想起来adam的参数</li>
@@ -487,9 +497,10 @@
 <h3 id="网络加速的措施"><a href="#网络加速的措施" class="headerlink" title="网络加速的措施"></a>网络加速的措施</h3><ol>
 <li>channel purning 通道修剪</li>
 <li>紧凑型网络设计</li>
-<li>稀疏矩阵 将feature map </li>
+<li>稀疏矩阵 将feature map 矩阵分解，张量分解</li>
 <li>权重量化  int8  float16</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1)人工设计轻量化神经网络模型；</span><br><span class="line">(2)基于神经网络架构搜索（Neural Architecture Search,NAS）的自动化设计神经网络；</span><br><span class="line">(3)CNN模型压缩；</span><br><span class="line">(4)基于AutoML的自动模型压缩</span><br></pre></td></tr></table></figure>
 <h3 id="神经网络结构性搜索的实现-及-改进方向"><a href="#神经网络结构性搜索的实现-及-改进方向" class="headerlink" title="神经网络结构性搜索的实现 及 改进方向"></a>神经网络结构性搜索的实现 及 改进方向</h3><ol>
 <li>重点介绍了FBNet网络的设计原理  及 mxnet的复现存在的问题，如多参数不同步更新、多卡加速训练存在的资源分配不均匀问题、学习率方法的优化(loss崩掉)；</li>
 <li>介绍了FLOPs和实际延迟存在的区别，介绍了新的loss设计</li>
@@ -558,6 +569,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/22/结构体指针malloc注意/" rel="prev" title="结构体指针malloc注意">
+                结构体指针malloc注意 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -639,7 +654,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -661,7 +676,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -812,7 +827,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.1k</span>
+    <span title="Site words total count">12.6k</span>
   
 </div>
 
