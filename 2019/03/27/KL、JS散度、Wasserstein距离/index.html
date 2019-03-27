@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="DL,GAN,">
 
 
 
@@ -88,17 +88,26 @@
 
 
 
-<meta name="description" content="一直上进的小脑斧~~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://www.junqw.top/tags/index.html">
+<meta name="description" content="交叉熵什么是信息量？ 假设XX是一个离散型随机变量，其取值集合为X，概率分布函数为p(x)=Pr(X=x),x∈p(x)=Pr(X=x),x∈X，我们定义事件X=x0X=x0的信息量为：I(x0)=−log(p(x0))I(x0)=−log(p(x0))，可以理解为，一个事件发生的概率越大，则它所携带的信息量就越小，而当p(x0)=1p(x0)=1时，熵将等于0，也就是说该事件的发生不会导致任">
+<meta name="keywords" content="DL,GAN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="交叉熵、KL、JS散度、Wasserstein距离">
+<meta property="og:url" content="http://www.junqw.top/2019/03/27/KL、JS散度、Wasserstein距离/index.html">
 <meta property="og:site_name" content="JunQW&#39;S BLOG">
-<meta property="og:description" content="一直上进的小脑斧~~">
+<meta property="og:description" content="交叉熵什么是信息量？ 假设XX是一个离散型随机变量，其取值集合为X，概率分布函数为p(x)=Pr(X=x),x∈p(x)=Pr(X=x),x∈X，我们定义事件X=x0X=x0的信息量为：I(x0)=−log(p(x0))I(x0)=−log(p(x0))，可以理解为，一个事件发生的概率越大，则它所携带的信息量就越小，而当p(x0)=1p(x0)=1时，熵将等于0，也就是说该事件的发生不会导致任">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-08T17:00:04.073Z">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15536718197325.jpg">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15536762113197.jpg">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15536762464850.jpg">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15536765216368.jpg">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15536710698462.jpg">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15536766682753.jpg">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15536712206717.jpg">
+<meta property="og:updated_time" content="2019-03-27T09:00:48.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="一直上进的小脑斧~~">
+<meta name="twitter:title" content="交叉熵、KL、JS散度、Wasserstein距离">
+<meta name="twitter:description" content="交叉熵什么是信息量？ 假设XX是一个离散型随机变量，其取值集合为X，概率分布函数为p(x)=Pr(X=x),x∈p(x)=Pr(X=x),x∈X，我们定义事件X=x0X=x0的信息量为：I(x0)=−log(p(x0))I(x0)=−log(p(x0))，可以理解为，一个事件发生的概率越大，则它所携带的信息量就越小，而当p(x0)=1p(x0)=1时，熵将等于0，也就是说该事件的发生不会导致任">
+<meta name="twitter:image" content="http://po7b8zci3.bkt.clouddn.com/15536718197325.jpg">
 
 
 
@@ -128,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://www.junqw.top/tags/">
+  <link rel="canonical" href="http://www.junqw.top/2019/03/27/KL、JS散度、Wasserstein距离/">
 
 
 
 
 
-  <title>tags | JunQW'S BLOG</title>
+  <title>交叉熵、KL、JS散度、Wasserstein距离 | JunQW'S BLOG</title>
   
 
 
@@ -298,40 +307,267 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.junqw.top/2019/03/27/KL、JS散度、Wasserstein距离/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunQW">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JunQW'S BLOG">
+    </span>
+
     
+
     
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 12 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Algorithm/" style="font-size: 21px; color: #6f6f6f">Algorithm</a> <a href="/tags/C/" style="font-size: 30px; color: #111">C++</a> <a href="/tags/DL/" style="font-size: 21px; color: #6f6f6f">DL</a> <a href="/tags/GAN/" style="font-size: 21px; color: #6f6f6f">GAN</a> <a href="/tags/MAC环境配置/" style="font-size: 21px; color: #6f6f6f">MAC环境配置</a> <a href="/tags/Mxnet/" style="font-size: 12px; color: #ccc">Mxnet</a> <a href="/tags/NAS/" style="font-size: 12px; color: #ccc">NAS</a> <a href="/tags/STL/" style="font-size: 12px; color: #ccc">STL</a> <a href="/tags/Tensorflow/" style="font-size: 12px; color: #ccc">Tensorflow</a> <a href="/tags/二叉树/" style="font-size: 12px; color: #ccc">二叉树</a> <a href="/tags/指针/" style="font-size: 12px; color: #ccc">指针</a> <a href="/tags/面试/" style="font-size: 12px; color: #ccc">面试</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">交叉熵、KL、JS散度、Wasserstein距离</h1>
         
-      </div>
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T15:14:50+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+          
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DL/" itemprop="url" rel="index">
+                    <span itemprop="name">DL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/27/KL、JS散度、Wasserstein距离/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/27/KL、JS散度、Wasserstein距离/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+              <span class="post-meta-divider">|</span>
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h2><h3 id="什么是信息量？"><a href="#什么是信息量？" class="headerlink" title="什么是信息量？"></a>什么是信息量？</h3><blockquote>
+<p>假设XX是一个离散型随机变量，其取值集合为X，概率分布函数为p(x)=Pr(X=x),x∈p(x)=Pr(X=x),x∈X，我们定义事件X=x0X=x0的信息量为：<br>I(x0)=−log(p(x0))I(x0)=−log(p(x0))，可以理解为，一个事件发生的概率越大，则它所携带的信息量就越小，而当p(x0)=1p(x0)=1时，熵将等于0，也就是说该事件的发生不会导致任何信息量的增加。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">举个例子，小明平时不爱学习，考试经常不及格，而小王是个勤奋学习的好学生，经常得满分，所以我们可以做如下假设： </span><br><span class="line">事件A：小明考试及格，对应的概率P(xA)=0.1P(xA)=0.1，信息量为I(xA)=−log(0.1)=3.3219I(xA)=−log⁡(0.1)=3.3219 </span><br><span class="line">事件B：小王考试及格，对应的概率P(xB)=0.999P(xB)=0.999，信息量为I(xB)=−log(0.999)=0.0014I(xB)=−log⁡(0.999)=0.0014</span><br></pre></td></tr></table></figure>
+<p>可以看出，结果非常符合直观：小明及格的可能性很低(十次考试只有一次及格)，因此如果某次考试及格了（大家都会说：XXX竟然及格了！），必然会引入较大的信息量，对应的II值也较高。而对于小王而言，考试及格是大概率事件，在事件B发生前，大家普遍认为事件B的发生几乎是确定的，因此当某次考试小王及格这个事件发生时并不会引入太多的信息量，相应的II值也非常的低。</p>
+<h3 id="什么是熵？"><a href="#什么是熵？" class="headerlink" title="什么是熵？"></a>什么是熵？</h3><p><strong>熵的本质是(香农)信息量的期望值</strong></p>
+<blockquote>
+<p>数学期望(mean)（或均值，亦简称期望）是试验中每次可能结果的概率乘以其结果的总和，它反映随机变量平均取值的大小。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">它是一个随机变量的确定性的度量。熵越大，变量的取值越不确定，反之就越确定。</span><br><span class="line">对于一个随机变量X而言，它的所有可能取值的信息量的期望（E[I(x)]）就称为熵。</span><br></pre></td></tr></table></figure>
+<p><img src="http://po7b8zci3.bkt.clouddn.com/15536718197325.jpg" alt></p>
+<p>当p取值为0、1时，整个系统十分稳定，所以信息熵为0，而当p=0.5时，系统最不稳定，信息熵最大；所以每一个系统都有一个真实的概率分布(真是分布)，而根据真实分布，我们可以选择一个最优策略消除系统的不确定性，而这个代价就是信息熵(信息熵衡量了系统的不确定性，而我们要消除这个不确定性，所要付出的【最小努力】（猜题次数、编码长度等）的大小就是信息熵)</p>
+<p><img src="http://po7b8zci3.bkt.clouddn.com/15536762113197.jpg" alt></p>
+<p><img src="http://po7b8zci3.bkt.clouddn.com/15536762464850.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 例如有一个箱子，有橙、紫、蓝及青四种颜色的小球任意个，各颜色小球的占比不清楚，现在我从中拿出一个小球，你猜我手中的小球是什么颜色？</span><br><span class="line"> </span><br><span class="line"> A: 假设均匀分布(1/4)，1/4概率是橙色球，小明需要猜两次，1/4是紫色球，小明需要猜两次，其余的小球类似，所以小明预期的猜球次数为：</span><br><span class="line">   H = 1/4 * 2 + 1/4 * 2 + 1/4 * 2 + 1/4 * 2 = 2</span><br><span class="line"></span><br><span class="line">2. 假设已知其中1/2是橙色球，1/4是紫色球，1/8是蓝色球及1/8是青色球。我从中拿出一个球，你猜我手中的球是什么颜色的？</span><br><span class="line"></span><br><span class="line">    A:1/2的概率是橙色球，小明需要猜一次，1/4的概率是紫色球，小明需要猜两次，1/8的概率是蓝色球，小明需要猜三次，1/8的概率是青色球，小明需要猜三次，所以小明猜题次数的期望为：</span><br><span class="line">     H = 1/2 * 1 + 1/4 * 2 + 1/8 * 3 + 1/8 * 3 = 1.75</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>所以，每一个系统都会有一个真实的概率分布，也叫真实分布，题目1的真实分布为（1/4，1/4，1/4，1/4），题目2的真实分布为（1/2，1/4，1/8，1/8），<strong>而根据真实分布，我们能够找到一个最优策略，以最小的代价消除系统的不确定性，而这个代价大小就是信息熵，记住，信息熵衡量了系统的不确定性，而我们要消除这个不确定性，所要付出的【最小努力】（猜题次数、编码长度等）的大小就是信息熵</strong>。具体来讲，题目1只需要猜两次就能确定任何一个小球的颜色，题目2只需要猜测1.75次就能确定任何一个小球的颜色。</p>
+</blockquote>
+<p>爸爸已经告诉小明这些小球的真实分布是（1/2，1/4, 1/8，1/8），但小明所选择的策略却认为所有的小球出现的概率相同，相当于忽略了爸爸告诉小明关于箱子中各小球的真实分布，而仍旧认为所有小球出现的概率是一样的，认为小球的分布为（1/4，1/4，1/4，1/4），这个分布就是非真实分布。此时，小明猜中任何一种颜色的小球都需要猜两次，即1/2 <em> 2 + 1/4 </em> 2 + 1/8 <em> 2 + 1/8 </em> 2 = 2。很明显，针对题目2，使用策略1是一个坏的选择，因为需要猜题的次数增加了，从1.75变成了2。因此，当我们知道根据系统的真实分布制定最优策略去消除系统的不确定性时，我们所付出的努力是最小的，但并不是每个人都和最强王者一样聪明，我们也许会使用其他的策略（非真实分布）去消除系统的不确定性，就好比如我将策略1用于题目2（原来这就是我在白银的原因），那么，当我们使用非最优策略消除系统的不确定性，所需要付出的努力的大小我们该如何去衡量呢？<br><strong>这就需要引入交叉熵，其用来衡量在给定的真实分布下，使用非真实分布所指定的策略消除系统的不确定性所需要付出的努力的大小</strong></p>
+<h3 id="什么是交叉熵"><a href="#什么是交叉熵" class="headerlink" title="什么是交叉熵"></a>什么是交叉熵</h3><p><img src="http://po7b8zci3.bkt.clouddn.com/15536765216368.jpg" alt></p>
+<h2 id="什么是相对熵？-KL散度"><a href="#什么是相对熵？-KL散度" class="headerlink" title="什么是相对熵？  KL散度"></a>什么是相对熵？  KL散度</h2><blockquote>
+<p>KL散度又称为相对熵，信息散度，信息增益。KL散度是是两个概率分布P和Q 差别的非对称性的度量(是两个随机分布间距离的度量)。 KL散度是用来 度量使用基于Q的编码来编码来自P的样本平均所需的额外的位元数。 典型情况下，P表示数据的真实分布，Q表示数据的理论分布，模型分布，或P的近似分布。</p>
+</blockquote>
+<p><strong>相对熵 = 某个策略的交叉熵 - 信息熵（根据系统真实分布计算而得的信息熵，为最优策略）</strong></p>
+<div align="center"><img src="http://po7b8zci3.bkt.clouddn.com/15536710698462.jpg" width="1000" height="180"></div>
+
+<p><strong>重点</strong><br><img src="http://po7b8zci3.bkt.clouddn.com/15536766682753.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">有时会将KL散度称为KL距离，但它并不满足距离的性质：</span><br><span class="line"></span><br><span class="line">1. KL散度不是对称的:KL(A,B) ≠ KL(B,A)</span><br><span class="line">2. KL散度不满足三角不等式: KL(A,B) &gt; KL(A,C)+KL(C,B)</span><br><span class="line">3. 凸函数  KL散度越小  两则分布越相似</span><br></pre></td></tr></table></figure>
+<h2 id="JS散度"><a href="#JS散度" class="headerlink" title="JS散度"></a>JS散度</h2><blockquote>
+<p>JS散度度量了两个概率分布的相似度，基于KL散度的变体，解决了KL散度非对称的问题。一般地，JS散度是对称的，其取值是0到1之间。定义如下：</p>
+</blockquote>
+<p><img src="http://po7b8zci3.bkt.clouddn.com/15536712206717.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">KL散度和JS散度度量的时候有一个问题：</span><br><span class="line"></span><br><span class="line">1. JS散度取值[0,1]，两者相同时为0，不同时为1；</span><br><span class="line">2. 如果两个分配P,Q离得很远，完全没有重叠的时候，那么KL散度值是没有意义的，而JS散度值是一个常数log2。</span><br><span class="line">3. 这在学习算法中是比较致命的，这就意味这这一点的梯度为0。梯度消失了。</span><br></pre></td></tr></table></figure>
+<h2 id="Wasserstein距离"><a href="#Wasserstein距离" class="headerlink" title="Wasserstein距离"></a>Wasserstein距离</h2>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+    
+    <div>
+      
+        
+
+<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            
+            ---------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读---------------
+        
+        </div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+
+            <a href="/tags/DL/" rel="tag"><i class="fa fa-tag"></i> DL</a>
+          
+
+            <a href="/tags/GAN/" rel="tag"><i class="fa fa-tag"></i> GAN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/25/GAN网络-1/" rel="next" title="生成对抗网络_GAN_1">
+                <i class="fa fa-chevron-left"></i> 生成对抗网络_GAN_1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -367,8 +603,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -507,6 +752,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#交叉熵"><span class="nav-number">1.</span> <span class="nav-text">交叉熵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是信息量？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是信息量？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是熵？"><span class="nav-number">1.2.</span> <span class="nav-text">什么是熵？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是交叉熵"><span class="nav-number">1.3.</span> <span class="nav-text">什么是交叉熵</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是相对熵？-KL散度"><span class="nav-number">2.</span> <span class="nav-text">什么是相对熵？  KL散度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS散度"><span class="nav-number">3.</span> <span class="nav-text">JS散度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wasserstein距离"><span class="nav-number">4.</span> <span class="nav-text">Wasserstein距离</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

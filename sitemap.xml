@@ -2,9 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.junqw.top/2019/03/12/STL/</loc>
+    
+    <lastmod>2019-03-27T09:01:20.325Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.junqw.top/2019/03/11/%E7%AE%97%E6%B3%95%E9%9A%8F%E7%AC%94/</loc>
+    
+    <lastmod>2019-03-27T09:01:15.432Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.junqw.top/2019/03/27/KL%E3%80%81JS%E6%95%A3%E5%BA%A6%E3%80%81Wasserstein%E8%B7%9D%E7%A6%BB/</loc>
+    
+    <lastmod>2019-03-27T09:00:48.678Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.junqw.top/2019/03/10/Mxnet2Caffe/</loc>
+    
+    <lastmod>2019-03-27T07:15:40.423Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.junqw.top/2019/03/09/FBNET/</loc>
+    
+    <lastmod>2019-03-27T07:15:32.129Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.junqw.top/2019/03/25/GAN%E7%BD%91%E7%BB%9C-1/</loc>
+    
+    <lastmod>2019-03-27T07:01:14.207Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.junqw.top/2019/03/21/%E4%BA%8C%E5%88%86%E6%B3%95-%E7%89%9B%E9%A1%BF%E6%B3%95-%E6%B1%82sqrt/</loc>
+    
+    <lastmod>2019-03-22T12:30:33.388Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.junqw.top/2019/03/22/%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88malloc%E6%B3%A8%E6%84%8F/</loc>
     
-    <lastmod>2019-03-22T08:33:18.448Z</lastmod>
+    <lastmod>2019-03-22T08:45:24.366Z</lastmod>
     
   </url>
   
@@ -16,37 +65,9 @@
   </url>
   
   <url>
-    <loc>http://www.junqw.top/2019/03/09/FBNET/</loc>
-    
-    <lastmod>2019-03-22T08:17:14.480Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.junqw.top/2019/03/12/STL/</loc>
-    
-    <lastmod>2019-03-22T02:36:12.090Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.junqw.top/2019/03/13/%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
     
     <lastmod>2019-03-22T01:58:44.576Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.junqw.top/2019/03/21/%E4%BA%8C%E5%88%86%E6%B3%95-%E7%89%9B%E9%A1%BF%E6%B3%95-%E6%B1%82sqrt/</loc>
-    
-    <lastmod>2019-03-21T09:55:44.290Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.junqw.top/2019/03/11/%E7%AE%97%E6%B3%95%E9%9A%8F%E7%AC%94/</loc>
-    
-    <lastmod>2019-03-21T08:59:23.195Z</lastmod>
     
   </url>
   
@@ -75,13 +96,6 @@
     <loc>http://www.junqw.top/2019/03/10/Installing%20PycURL%20on%20macOS%20High%20Sierra/</loc>
     
     <lastmod>2019-03-10T13:08:49.675Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.junqw.top/2019/03/10/Mxnet2Caffe/</loc>
-    
-    <lastmod>2019-03-10T12:09:04.141Z</lastmod>
     
   </url>
   

@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="DL,GAN,">
 
 
 
@@ -88,17 +88,22 @@
 
 
 
-<meta name="description" content="一直上进的小脑斧~~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://www.junqw.top/tags/index.html">
+<meta name="description" content="初识GAN 生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；   GAN网络的生成原理GAN网络需要生成器和判别器两个模块，两者进行博弈对抗学习，让生成器G生成更真实的数据，让判别器D可以更好的判别假的(生">
+<meta name="keywords" content="DL,GAN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生成对抗网络_GAN_1">
+<meta property="og:url" content="http://www.junqw.top/2019/03/25/GAN网络-1/index.html">
 <meta property="og:site_name" content="JunQW&#39;S BLOG">
-<meta property="og:description" content="一直上进的小脑斧~~">
+<meta property="og:description" content="初识GAN 生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；   GAN网络的生成原理GAN网络需要生成器和判别器两个模块，两者进行博弈对抗学习，让生成器G生成更真实的数据，让判别器D可以更好的判别假的(生">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-08T17:00:04.073Z">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15535057302233.jpg">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15535058398896.jpg">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15535054664789.jpg">
+<meta property="og:updated_time" content="2019-03-27T07:01:14.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="一直上进的小脑斧~~">
+<meta name="twitter:title" content="生成对抗网络_GAN_1">
+<meta name="twitter:description" content="初识GAN 生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；   GAN网络的生成原理GAN网络需要生成器和判别器两个模块，两者进行博弈对抗学习，让生成器G生成更真实的数据，让判别器D可以更好的判别假的(生">
+<meta name="twitter:image" content="http://po7b8zci3.bkt.clouddn.com/15535057302233.jpg">
 
 
 
@@ -128,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://www.junqw.top/tags/">
+  <link rel="canonical" href="http://www.junqw.top/2019/03/25/GAN网络-1/">
 
 
 
 
 
-  <title>tags | JunQW'S BLOG</title>
+  <title>生成对抗网络_GAN_1 | JunQW'S BLOG</title>
   
 
 
@@ -298,40 +303,278 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.junqw.top/2019/03/25/GAN网络-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunQW">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JunQW'S BLOG">
+    </span>
+
     
+
     
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 12 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Algorithm/" style="font-size: 21px; color: #6f6f6f">Algorithm</a> <a href="/tags/C/" style="font-size: 30px; color: #111">C++</a> <a href="/tags/DL/" style="font-size: 21px; color: #6f6f6f">DL</a> <a href="/tags/GAN/" style="font-size: 21px; color: #6f6f6f">GAN</a> <a href="/tags/MAC环境配置/" style="font-size: 21px; color: #6f6f6f">MAC环境配置</a> <a href="/tags/Mxnet/" style="font-size: 12px; color: #ccc">Mxnet</a> <a href="/tags/NAS/" style="font-size: 12px; color: #ccc">NAS</a> <a href="/tags/STL/" style="font-size: 12px; color: #ccc">STL</a> <a href="/tags/Tensorflow/" style="font-size: 12px; color: #ccc">Tensorflow</a> <a href="/tags/二叉树/" style="font-size: 12px; color: #ccc">二叉树</a> <a href="/tags/指针/" style="font-size: 12px; color: #ccc">指针</a> <a href="/tags/面试/" style="font-size: 12px; color: #ccc">面试</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">生成对抗网络_GAN_1</h1>
         
-      </div>
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T15:16:50+08:00">
+                2019-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+          
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DL/" itemprop="url" rel="index">
+                    <span itemprop="name">DL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/25/GAN网络-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/25/GAN网络-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+              <span class="post-meta-divider">|</span>
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="初识GAN"><a href="#初识GAN" class="headerlink" title="初识GAN"></a>初识GAN</h2><blockquote>
+<p>生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；</p>
+</blockquote>
+<ol>
+<li><strong>GAN网络的生成原理</strong><br><img src="http://po7b8zci3.bkt.clouddn.com/15535057302233.jpg" alt><br>GAN网络需要生成器和判别器两个模块，两者进行博弈对抗学习，让生成器G生成更真实的数据，让判别器D可以更好的判别假的(生成的)数据，其中生成器的输入为白噪声;</li>
+</ol>
+<blockquote>
+<p>GAN包括两个网络模型，一个生成模型G（generator）和一个判别模型D（discriminator），其中D就是识别检测类模型中经常使用的网络。GAN的大概流程是，G以随机噪声作为输入，生成出一张图像G(z)，暂且不管生成质量多好，然后D以G(z)和真实图像x作为输入，对G(z)和x做一个二分类，检测谁是真实图像谁是生成的假图像。D的输出是一个概率值，比如G(z)作为输入时D输出0.15，那么代表D认为G(z)有15%的概率是真图像。然后G和D会根据D输出的情况不断改进自己，G提高G(z)和x的相似度，尽可能的欺骗D，而D则会通过学习尽可能的不被G欺骗。二者相当于是做一个极大极小的博弈过程，称为零和博弈。</p>
+</blockquote>
+<ol start="2">
+<li><strong>初代GAN_Loss设计</strong><br><img src="http://po7b8zci3.bkt.clouddn.com/15535058398896.jpg" alt></li>
+</ol>
+<p>由于需要判别器D更好的判别真假，所以需要maxD,既D(x)更接近与1，</p>
+<ol start="3">
+<li><strong>训练方法/流程</strong><br><img src="http://po7b8zci3.bkt.clouddn.com/15535054664789.jpg" alt></li>
+</ol>
+<blockquote>
+<p>图2展示了GAN训练的伪代码，首先在迭代次数范围内，首先对z和x采样一个批次，获得他们的数据分布，然后通过随机梯度下降的方法先对D做k次更新，之后对G做一次更新，这样做的主要目的是保证D一直有足够的能力去分辨真假。实际在代码中我们可能会多更新几次G只更新一次D，不然D学习的太好，会导致训练前期发生梯度消失的问题</p>
+</blockquote>
+<h2 id="训练GAN的一些技巧"><a href="#训练GAN的一些技巧" class="headerlink" title="训练GAN的一些技巧"></a>训练GAN的一些技巧</h2><ol>
+<li>输入规范化到（-1，1）之间，最后一层的激活函数使用tanh（BEGAN除外）</li>
+<li>使用wassertein GAN的损失函数，</li>
+<li>如果有标签数据的话，尽量使用标签，也有人提出使用反转标签效果很好，另外使用标签平滑，单边标签平滑或者双边标签平滑</li>
+<li>使用mini-batch norm， 如果不用batch norm 可以使用instance norm 或者weight norm</li>
+<li>避免使用RELU和pooling层，<strong>减少稀疏梯度的可能性</strong>，可以使用leakrelu激活函数</li>
+<li>优化器尽量选择ADAM，学习率不要设置太大，初始1e-4可以参考，另外可以随着训练进行不断缩小学习率，</li>
+<li>给D的网络层增加高斯噪声，相当于是一种正则</li>
+</ol>
+<h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><h3 id="训练存在的问题"><a href="#训练存在的问题" class="headerlink" title="训练存在的问题"></a>训练存在的问题</h3><ul>
+<li>训练GAN需要达到纳什均衡,有时候可以用梯度下降法做到,有时候做不到.我们还没有找到很好的达到纳什均衡的方法,所以训练GAN相比VAE或者PixelRNN是不稳定的,但我认为在实践中它还是比训练玻尔兹曼机稳定的多</li>
+<li>GAN不适合处理离散形式的数据，比如文本</li>
+<li>GAN存在训练不稳定、梯度消失、模式崩溃的问题（目前已解决）</li>
+</ul>
+<h3 id="为什么GAN中的优化器不常用SGD"><a href="#为什么GAN中的优化器不常用SGD" class="headerlink" title="为什么GAN中的优化器不常用SGD"></a>为什么GAN中的优化器不常用SGD</h3><ol>
+<li>SGD容易震荡，容易使GAN训练不稳定，</li>
+<li>GAN的目的是在高维非凸的参数空间中找到纳什均衡点，GAN的纳什均衡点是一个鞍点，但是SGD只会找到局部极小值，因为SGD解决的是一个寻找最小值的问题，GAN是一个博弈问题。</li>
+</ol>
+<h3 id="模式崩溃-model-collapse-原因"><a href="#模式崩溃-model-collapse-原因" class="headerlink" title="模式崩溃(model collapse)原因"></a>模式崩溃(model collapse)原因</h3><p>一般出现在GAN训练不稳定的时候，具体表现为生成出来的结果非常差，但是即使加长训练时间后也无法得到很好的改善。</p>
+<p>具体原因可以解释如下：GAN采用的是对抗训练的方式，G的梯度更新来自D，所以G生成的好不好，得看D怎么说。具体就是G生成一个样本，交给D去评判，D会输出生成的假样本是真样本的概率（0-1），相当于告诉G生成的样本有多大的真实性，G就会根据这个反馈不断改善自己，提高D输出的概率值。但是如果某一次G生成的样本可能并不是很真实，但是D给出了正确的评价，或者是G生成的结果中一些特征得到了D的认可，这时候G就会认为我输出的正确的，那么接下来我就这样输出肯定D还会给出比较高的评价，实际上G生成的并不怎么样，但是他们两个就这样自我欺骗下去了，导致最终生成结果缺失一些信息，特征不全。</p>
+<p>关于梯度消失的问题可以参考郑华滨的令人拍案叫绝的wassertein GAN，里面给出了详细的解释，不过多重复。</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+    
+    <div>
+      
+        
+
+<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            
+            ---------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读---------------
+        
+        </div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+
+            <a href="/tags/DL/" rel="tag"><i class="fa fa-tag"></i> DL</a>
+          
+
+            <a href="/tags/GAN/" rel="tag"><i class="fa fa-tag"></i> GAN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/22/结构体指针malloc注意/" rel="next" title="结构体指针malloc注意">
+                <i class="fa fa-chevron-left"></i> 结构体指针malloc注意
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/27/KL、JS散度、Wasserstein距离/" rel="prev" title="交叉熵、KL、JS散度、Wasserstein距离">
+                交叉熵、KL、JS散度、Wasserstein距离 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -367,8 +610,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -507,6 +759,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识GAN"><span class="nav-number">1.</span> <span class="nav-text">初识GAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练GAN的一些技巧"><span class="nav-number">2.</span> <span class="nav-text">训练GAN的一些技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存在的问题"><span class="nav-number">3.</span> <span class="nav-text">存在的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练存在的问题"><span class="nav-number">3.1.</span> <span class="nav-text">训练存在的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么GAN中的优化器不常用SGD"><span class="nav-number">3.2.</span> <span class="nav-text">为什么GAN中的优化器不常用SGD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式崩溃-model-collapse-原因"><span class="nav-number">3.3.</span> <span class="nav-text">模式崩溃(model collapse)原因</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
