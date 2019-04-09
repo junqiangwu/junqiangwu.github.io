@@ -88,21 +88,22 @@
 
 
 
-<meta name="description" content="初识GAN 生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；   GAN网络的生成原理GAN网络需要生成器和判别器两个模块，两者进行博弈对抗学习，让生成器G生成更真实的数据，让判别器D可以更好的判别假的(生">
+<meta name="description" content="初识GAN 生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；  Wasserstein GAN 很详细知乎专栏、介绍Wasserstein GANhttps://zhuanlan.zhihu.com/p/2">
 <meta name="keywords" content="DL,GAN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="生成对抗网络_GAN_1">
 <meta property="og:url" content="http://www.junqw.top/2019/03/25/GAN网络-1/index.html">
 <meta property="og:site_name" content="JunQW&#39;S BLOG">
-<meta property="og:description" content="初识GAN 生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；   GAN网络的生成原理GAN网络需要生成器和判别器两个模块，两者进行博弈对抗学习，让生成器G生成更真实的数据，让判别器D可以更好的判别假的(生">
+<meta property="og:description" content="初识GAN 生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；  Wasserstein GAN 很详细知乎专栏、介绍Wasserstein GANhttps://zhuanlan.zhihu.com/p/2">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15535057302233.jpg">
 <meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15535058398896.jpg">
 <meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15535054664789.jpg">
-<meta property="og:updated_time" content="2019-03-27T07:01:14.207Z">
+<meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/11553737900_.pic_hd.jpg">
+<meta property="og:updated_time" content="2019-03-30T04:32:44.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生成对抗网络_GAN_1">
-<meta name="twitter:description" content="初识GAN 生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；   GAN网络的生成原理GAN网络需要生成器和判别器两个模块，两者进行博弈对抗学习，让生成器G生成更真实的数据，让判别器D可以更好的判别假的(生">
+<meta name="twitter:description" content="初识GAN 生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；  Wasserstein GAN 很详细知乎专栏、介绍Wasserstein GANhttps://zhuanlan.zhihu.com/p/2">
 <meta name="twitter:image" content="http://po7b8zci3.bkt.clouddn.com/15535057302233.jpg">
 
 
@@ -454,6 +455,7 @@
         <h2 id="初识GAN"><a href="#初识GAN" class="headerlink" title="初识GAN"></a>初识GAN</h2><blockquote>
 <p>生成对抗网络(Generative Adversarial Nets,GAN)是由Good fellow在2014年提出的一种生成式模型，深度学习领域的图像生成，风格迁移，图像变换，图像描述，无监督学习，甚至强化学习领域都能看到GAN的身影；</p>
 </blockquote>
+<p><strong>Wasserstein GAN 很详细</strong><br><a href="https://zhuanlan.zhihu.com/p/25071913" target="_blank" rel="noopener">知乎专栏、介绍Wasserstein GAN</a><br><a href="https://zhuanlan.zhihu.com/p/25071913" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25071913</a></p>
 <ol>
 <li><strong>GAN网络的生成原理</strong><br><img src="http://po7b8zci3.bkt.clouddn.com/15535057302233.jpg" alt><br>GAN网络需要生成器和判别器两个模块，两者进行博弈对抗学习，让生成器G生成更真实的数据，让判别器D可以更好的判别假的(生成的)数据，其中生成器的输入为白噪声;</li>
 </ol>
@@ -491,6 +493,7 @@
 <h3 id="模式崩溃-model-collapse-原因"><a href="#模式崩溃-model-collapse-原因" class="headerlink" title="模式崩溃(model collapse)原因"></a>模式崩溃(model collapse)原因</h3><p>一般出现在GAN训练不稳定的时候，具体表现为生成出来的结果非常差，但是即使加长训练时间后也无法得到很好的改善。</p>
 <p>具体原因可以解释如下：GAN采用的是对抗训练的方式，G的梯度更新来自D，所以G生成的好不好，得看D怎么说。具体就是G生成一个样本，交给D去评判，D会输出生成的假样本是真样本的概率（0-1），相当于告诉G生成的样本有多大的真实性，G就会根据这个反馈不断改善自己，提高D输出的概率值。但是如果某一次G生成的样本可能并不是很真实，但是D给出了正确的评价，或者是G生成的结果中一些特征得到了D的认可，这时候G就会认为我输出的正确的，那么接下来我就这样输出肯定D还会给出比较高的评价，实际上G生成的并不怎么样，但是他们两个就这样自我欺骗下去了，导致最终生成结果缺失一些信息，特征不全。</p>
 <p>关于梯度消失的问题可以参考郑华滨的令人拍案叫绝的wassertein GAN，里面给出了详细的解释，不过多重复。</p>
+<p><img src="http://po7b8zci3.bkt.clouddn.com/11553737900_.pic_hd.jpg" alt></p>
 
       
     </div>
@@ -810,7 +813,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">16.8k</span>
+    <span title="Site words total count">34.4k</span>
   
 </div>
 
