@@ -88,19 +88,21 @@
 
 
 
-<meta name="description" content="构建二叉树Tree高度延伸的一类题目  Maximum Depth of Binary Tree最基础的递归，先递归到底，当Leaf Node的左右两个Children Node都分别触及Base Case，也就是None的时候，向上返回。然后之后对应当前node，左右两边的递归都操作结束以后，返回的过程中对左右高度进行对比，取两个中间最大值，然后这里记住要加1，也就是当前的层数。  class">
+<meta name="description" content="构建二叉树Tree高度延伸的一类题目 104. Maximum Depth of Binary Tree最基础的递归，先递归到底，当Leaf Node的左右两个Children Node都分别触及Base Case，也就是None的时候，向上返回。然后之后对应当前node，左右两边的递归都操作结束以后，返回的过程中对左右高度进行对比，取两个中间最大值，然后这里记住要加1，也就是当前的层数。 cla">
 <meta name="keywords" content="二叉树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树">
 <meta property="og:url" content="http://www.junqw.top/2019/03/13/二叉树/index.html">
 <meta property="og:site_name" content="JunQW&#39;S BLOG">
-<meta property="og:description" content="构建二叉树Tree高度延伸的一类题目  Maximum Depth of Binary Tree最基础的递归，先递归到底，当Leaf Node的左右两个Children Node都分别触及Base Case，也就是None的时候，向上返回。然后之后对应当前node，左右两边的递归都操作结束以后，返回的过程中对左右高度进行对比，取两个中间最大值，然后这里记住要加1，也就是当前的层数。  class">
+<meta property="og:description" content="构建二叉树Tree高度延伸的一类题目 104. Maximum Depth of Binary Tree最基础的递归，先递归到底，当Leaf Node的左右两个Children Node都分别触及Base Case，也就是None的时候，向上返回。然后之后对应当前node，左右两边的递归都操作结束以后，返回的过程中对左右高度进行对比，取两个中间最大值，然后这里记住要加1，也就是当前的层数。 cla">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://po7b8zci3.bkt.clouddn.com/15548161662880.jpg">
-<meta property="og:updated_time" content="2019-04-09T13:28:07.859Z">
+<meta property="og:image" content="https://pingo-img.oss-cn-beijing.aliyuncs.com/20190410130651.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/junqiangwu/img_PinGo/master/img/20190410172635.png">
+<meta property="og:updated_time" content="2019-04-10T14:04:52.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树">
-<meta name="twitter:description" content="构建二叉树Tree高度延伸的一类题目  Maximum Depth of Binary Tree最基础的递归，先递归到底，当Leaf Node的左右两个Children Node都分别触及Base Case，也就是None的时候，向上返回。然后之后对应当前node，左右两边的递归都操作结束以后，返回的过程中对左右高度进行对比，取两个中间最大值，然后这里记住要加1，也就是当前的层数。  class">
+<meta name="twitter:description" content="构建二叉树Tree高度延伸的一类题目 104. Maximum Depth of Binary Tree最基础的递归，先递归到底，当Leaf Node的左右两个Children Node都分别触及Base Case，也就是None的时候，向上返回。然后之后对应当前node，左右两边的递归都操作结束以后，返回的过程中对左右高度进行对比，取两个中间最大值，然后这里记住要加1，也就是当前的层数。 cla">
 <meta name="twitter:image" content="http://po7b8zci3.bkt.clouddn.com/15548161662880.jpg">
 
 
@@ -378,6 +380,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -412,7 +425,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  1.5k
                 </span>
               
 
@@ -450,16 +463,12 @@
 
       
         <h2 id="构建二叉树"><a href="#构建二叉树" class="headerlink" title="构建二叉树"></a>构建二叉树</h2><p>Tree高度延伸的一类题目</p>
-<ol start="104">
-<li>Maximum Depth of Binary Tree<br>最基础的递归，先递归到底，当Leaf Node的左右两个Children Node都分别触及Base Case，也就是None的时候，向上返回。然后之后对应当前node，左右两边的递归都操作结束以后，返回的过程中对左右高度进行对比，取两个中间最大值，然后这里记住要加1，也就是当前的层数。</li>
-</ol>
+<h2 id="104-Maximum-Depth-of-Binary-Tree"><a href="#104-Maximum-Depth-of-Binary-Tree" class="headerlink" title="104. Maximum Depth of Binary Tree"></a>104. Maximum Depth of Binary Tree</h2><p>最基础的递归，先递归到底，当Leaf Node的左右两个Children Node都分别触及Base Case，也就是None的时候，向上返回。然后之后对应当前node，左右两边的递归都操作结束以后，返回的过程中对左右高度进行对比，取两个中间最大值，然后这里记住要加1，也就是当前的层数。</p>
 <p>class Solution(object):<br>    def maxDepth_gd(self, root):<br>        ‘’’bugfree’’’<br>        if not root: return 0</p>
 <pre><code>left = self.maxDepth(root.left)
 right = self.maxDepth(root.right)
 return max(left, right) + 1
-</code></pre><ol start="110">
-<li>Balanced Binary Tree<br>有了104的基础，我们在延伸下看看110这道题，其实就是基于高度计算，然后判断一下。</li>
-</ol>
+</code></pre><h2 id="110-Balanced-Binary-Tree"><a href="#110-Balanced-Binary-Tree" class="headerlink" title="110. Balanced Binary Tree"></a>110. Balanced Binary Tree</h2><p>有了104的基础，我们在延伸下看看110这道题，其实就是基于高度计算，然后判断一下。</p>
 <p>但由于嵌套的Recursion调用，整体的时间复杂度是：O(nlogn) , 在每一层调用get_height的平均时间复杂度是O(N)，然后基于二叉树的性质，调用了的高度是logn，所以n * logn 的时间复杂。</p>
 <p>时间复杂度为什么是nlogn搞不清楚的看 时间复杂度图解</p>
 <p>class Solution(object):<br>    def isBalanced(self, root):<br>        if not root: return True<br>        left = self.get_height(root.left)<br>        right = self.get_height(root.right)<br>        if abs(left - right) &gt; 1:<br>            return False<br>        return self.isBalanced(root.left) and self.isBalanced(root.right)</p>
@@ -470,7 +479,10 @@ return max(left, right) + 1
     return max(left, right) + 1
 </code></pre><p>上面这种Brute Froce的方法，整棵树有很多冗余无意义的遍历，其实我们在处理完get_height这个高度的时候，我们完全可以在检查每个节点高度并且返回的同时，记录左右差是否已经超过1，只要有一个节点超过1，那么直接返回False即可，因此我们只需要在外围设立一个全球变量记录True和False，在调用get_height的时候，内置代码里加入对左右高度的判定即可，代码如下</p>
 <p>时间复杂度: O(N)</p>
-<h1 id="Recursive-Rules"><a href="#Recursive-Rules" class="headerlink" title="Recursive Rules:"></a>Recursive Rules:</h1><h1 id="索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，"><a href="#索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，" class="headerlink" title="索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，"></a>索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，</h1><h1 id="返回：如果都是Balanced的，返回True，不然返回False"><a href="#返回：如果都是Balanced的，返回True，不然返回False" class="headerlink" title="返回：如果都是Balanced的，返回True，不然返回False"></a>返回：如果都是Balanced的，返回True，不然返回False</h1><p>class Solution(object):<br>    def isBalanced(self, root):<br>        self.flag = False<br>        self.getHeight(root)<br>        return not self.flag</p>
+<h3 id="Recursive-Rules"><a href="#Recursive-Rules" class="headerlink" title="Recursive Rules:"></a>Recursive Rules:</h3><blockquote>
+<p>索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，返回：如果都是Balanced的，返回True，不然返回False</p>
+</blockquote>
+<p>class Solution(object):<br>    def isBalanced(self, root):<br>        self.flag = False<br>        self.getHeight(root)<br>        return not self.flag</p>
 <pre><code>def getHeight(self, root):
     if not root: return 0
     left = self.getHeight(root.left)
@@ -489,56 +501,20 @@ return max(left, right) + 1
     if left == -1 or right == -1 : return -1          
     if abs(left - right) &gt; 1:  return -1
     return max(left, right) + 1
-</code></pre><h2 id="111-Minimum-Depth-of-Binary-Tree"><a href="#111-Minimum-Depth-of-Binary-Tree" class="headerlink" title="111. Minimum Depth of Binary Tree"></a>111. Minimum Depth of Binary Tree</h2><p>![-w655](—<br>title: 二叉树<br>comments: true<br>categories:</p>
-<ul>
-<li>C++<br>tags:</li>
-<li>二叉树<br>date: 2019-03-13 19:42:29<br>description: </li>
-</ul>
-<hr>
-<h2 id="构建二叉树-1"><a href="#构建二叉树-1" class="headerlink" title="构建二叉树"></a>构建二叉树</h2><p>Tree高度延伸的一类题目</p>
-<ol start="104">
-<li>Maximum Depth of Binary Tree<br>最基础的递归，先递归到底，当Leaf Node的左右两个Children Node都分别触及Base Case，也就是None的时候，向上返回。然后之后对应当前node，左右两边的递归都操作结束以后，返回的过程中对左右高度进行对比，取两个中间最大值，然后这里记住要加1，也就是当前的层数。</li>
-</ol>
-<p>class Solution(object):<br>    def maxDepth_gd(self, root):<br>        ‘’’bugfree’’’<br>        if not root: return 0</p>
-<pre><code>left = self.maxDepth(root.left)
-right = self.maxDepth(root.right)
-return max(left, right) + 1
-</code></pre><ol start="110">
-<li>Balanced Binary Tree<br>有了104的基础，我们在延伸下看看110这道题，其实就是基于高度计算，然后判断一下。</li>
-</ol>
-<p>但由于嵌套的Recursion调用，整体的时间复杂度是：O(nlogn) , 在每一层调用get_height的平均时间复杂度是O(N)，然后基于二叉树的性质，调用了的高度是logn，所以n * logn 的时间复杂。</p>
-<p>时间复杂度为什么是nlogn搞不清楚的看 时间复杂度图解</p>
-<p>class Solution(object):<br>    def isBalanced(self, root):<br>        if not root: return True<br>        left = self.get_height(root.left)<br>        right = self.get_height(root.right)<br>        if abs(left - right) &gt; 1:<br>            return False<br>        return self.isBalanced(root.left) and self.isBalanced(root.right)</p>
-<pre><code>def get_height(self, root):
-    if not root: return 0
-    left = self.get_height(root.left)
-    right = self.get_height(root.right)
-    return max(left, right) + 1
-</code></pre><p>上面这种Brute Froce的方法，整棵树有很多冗余无意义的遍历，其实我们在处理完get_height这个高度的时候，我们完全可以在检查每个节点高度并且返回的同时，记录左右差是否已经超过1，只要有一个节点超过1，那么直接返回False即可，因此我们只需要在外围设立一个全球变量记录True和False，在调用get_height的时候，内置代码里加入对左右高度的判定即可，代码如下</p>
-<p>时间复杂度: O(N)</p>
-<h1 id="Recursive-Rules-1"><a href="#Recursive-Rules-1" class="headerlink" title="Recursive Rules:"></a>Recursive Rules:</h1><h1 id="索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，-1"><a href="#索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，-1" class="headerlink" title="索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，"></a>索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，</h1><h1 id="返回：如果都是Balanced的，返回True，不然返回False-1"><a href="#返回：如果都是Balanced的，返回True，不然返回False-1" class="headerlink" title="返回：如果都是Balanced的，返回True，不然返回False"></a>返回：如果都是Balanced的，返回True，不然返回False</h1><p>class Solution(object):<br>    def isBalanced(self, root):<br>        self.flag = False<br>        self.getHeight(root)<br>        return not self.flag</p>
-<pre><code>def getHeight(self, root):
-    if not root: return 0
-    left = self.getHeight(root.left)
-    right = self.getHeight(root.right)
-    if abs(left - right) &gt; 1: 
-        self.flag = True
-    return max(left, right) + 1
-</code></pre><p>最后Leetcode上有一种-1的方法，其实就是上面这种方法的一种延伸。如果左右两边出现了高度差高于1的情况，直接返回-1，这个-1怎么来的？因为高度不可能为负数，-1其实就是一种True/False的表达。</p>
-<p>那么在实现上，我们只要对get_height每次返回前做一个判定即可，具体实现看下方：</p>
-<p>时间复杂度: O(N)</p>
-<p>class Solution(object):<br>    def isBalanced(self, root):<br>        height = self.get_height(root)<br>        return height != -1</p>
-<pre><code>def get_height(self, root):
-    if not root: return 0
-    left = self.get_height(root.left)
-    right = self.get_height(root.right)
-    if left == -1 or right == -1 : return -1          
-    if abs(left - right) &gt; 1:  return -1
-    return max(left, right) + 1
-</code></pre><h2 id="111-Minimum-Depth-of-Binary-Tree-1"><a href="#111-Minimum-Depth-of-Binary-Tree-1" class="headerlink" title="111. Minimum Depth of Binary Tree"></a>111. Minimum Depth of Binary Tree</h2><blockquote>
+</code></pre><h2 id="111-Minimum-Depth-of-Binary-Tree"><a href="#111-Minimum-Depth-of-Binary-Tree" class="headerlink" title="111. Minimum Depth of Binary Tree"></a>111. Minimum Depth of Binary Tree</h2><blockquote>
 <p>返回叶子 (无左右孩子的节点) 节点的最小深度<br><img src="http://po7b8zci3.bkt.clouddn.com/15548161662880.jpg" alt="-w655"></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">int minDepth(TreeNode* root) &#123;</span><br><span class="line">        if(root==NULL) return 0;</span><br><span class="line">        int dep =1;</span><br><span class="line">        queue&lt;TreeNode*&gt; q_cur,q_next;</span><br><span class="line">        q_cur.push(root);</span><br><span class="line">        </span><br><span class="line">        while(!q_cur.empty())&#123;</span><br><span class="line">                TreeNode* a = q_cur.front();</span><br><span class="line">                q_cur.pop();</span><br><span class="line">               </span><br><span class="line">               if(a-&gt;left==NULL &amp;&amp; a-&gt;right==NULL) </span><br><span class="line">                    return dep;</span><br><span class="line">               if(a-&gt;left!=NULL)</span><br><span class="line">                   q_next.push(a-&gt;left);</span><br><span class="line">               if(a-&gt;right!=NULL)</span><br><span class="line">                   q_next.push(a-&gt;right);</span><br><span class="line">            </span><br><span class="line">                if(q_cur.empty())&#123;</span><br><span class="line">                    swap(q_cur,q_next);</span><br><span class="line">                    dep+=1;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">             return dep;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"># 或者使用一个队列  每一次层次遍历 都提前计算出当前层的size   既当前层的元素数量</span><br><span class="line"></span><br><span class="line">//         while(!q.empty())&#123;</span><br><span class="line">//             int size = q.size();</span><br><span class="line">//             while(size&gt;0)&#123;</span><br><span class="line">//                 TreeNode* a = q.front();</span><br><span class="line">//                 q.pop();</span><br><span class="line">               </span><br><span class="line">//                if(a-&gt;left==NULL &amp;&amp; a-&gt;right==NULL) </span><br><span class="line">//                     return dep;</span><br><span class="line">//                if(a-&gt;left!=NULL)</span><br><span class="line">//                    q.push(a-&gt;left);</span><br><span class="line">//                if(a-&gt;right!=NULL)</span><br><span class="line">//                    q.push(a-&gt;right);</span><br><span class="line">//                size--;</span><br><span class="line">//             &#125;</span><br><span class="line">            </span><br><span class="line">//             dep+=1;</span><br><span class="line">//         &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="112-Path-Sum-路径数值和"><a href="#112-Path-Sum-路径数值和" class="headerlink" title="112. Path Sum   路径数值和"></a>112. Path Sum   路径数值和</h2><h3 id="普通的dfs-递归"><a href="#普通的dfs-递归" class="headerlink" title="普通的dfs 递归"></a>普通的dfs 递归</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bool hasPathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">       if(root == NULL) return false;</span><br><span class="line">        </span><br><span class="line">       if(root-&gt;left == NULL &amp;&amp; root-&gt;right == NULL &amp;&amp; sum-root-&gt;val==0)  return true;</span><br><span class="line">       </span><br><span class="line">       return hasPathSum(root-&gt;left,(sum-root-&gt;val)) || hasPathSum(root-&gt;right,(sum-root-&gt;val));   </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="利用栈实现的非递归dfs"><a href="#利用栈实现的非递归dfs" class="headerlink" title="利用栈实现的非递归dfs"></a>利用栈实现的非递归dfs</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">bool hasPathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">        if(root==NULL) return false;</span><br><span class="line">        </span><br><span class="line">        stack&lt;TreeNode*&gt; s;</span><br><span class="line">        stack&lt;int&gt; s_n;</span><br><span class="line">        </span><br><span class="line">        s.push(root);</span><br><span class="line">        s_n.push(root-&gt;val);</span><br><span class="line">        </span><br><span class="line">        while (!s.empty())&#123;</span><br><span class="line">            TreeNode* a = s.top();</span><br><span class="line">            int b = s_n.top();</span><br><span class="line">            s.pop(); s_n.pop();</span><br><span class="line">            if(a-&gt;left==NULL &amp;&amp; a-&gt;right==NULL &amp;&amp; b==sum)</span><br><span class="line">                return true;</span><br><span class="line">            </span><br><span class="line">            if(a-&gt;left!=NULL)&#123;</span><br><span class="line">                s.push(a-&gt;left);</span><br><span class="line">                s_n.push(b+a-&gt;left-&gt;val);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            if(a-&gt;right!=NULL)&#123;</span><br><span class="line">                s.push(a-&gt;right);</span><br><span class="line">                s_n.push(b+a-&gt;right-&gt;val);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">      return false;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="输出Tree的路径value-257-Binary-Tree-Paths"><a href="#输出Tree的路径value-257-Binary-Tree-Paths" class="headerlink" title="输出Tree的路径value 257. Binary Tree Paths"></a>输出Tree的路径value 257. Binary Tree Paths</h2><p><img src="https://pingo-img.oss-cn-beijing.aliyuncs.com/20190410130651.png" alt></p>
+<p><strong>递归dfs 实现</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">void dfs(TreeNode* root,string str,vector&lt;string&gt;&amp; res)&#123;</span><br><span class="line">       </span><br><span class="line">       if(root-&gt;left==NULL &amp;&amp; root-&gt;right==NULL)&#123;</span><br><span class="line">           res.push_back(str);</span><br><span class="line">       &#125;</span><br><span class="line">       if(root-&gt;left!=NULL)&#123;</span><br><span class="line">           dfs(root-&gt;left,str+&quot;-&gt;&quot;+to_string(root-&gt;left-&gt;val),res);</span><br><span class="line">       &#125;</span><br><span class="line">       if(root-&gt;right!=NULL)&#123;</span><br><span class="line">           dfs(root-&gt;right,str+&quot;-&gt;&quot;+to_string(root-&gt;right-&gt;val),res);</span><br><span class="line">       &#125;     </span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   vector&lt;string&gt; binaryTreePaths(TreeNode* root) &#123;</span><br><span class="line">       vector&lt;string&gt; res;</span><br><span class="line">       if(root == NULL) return res;</span><br><span class="line">       string str = to_string(root-&gt;val);</span><br><span class="line">       dfs(root,str,res);</span><br><span class="line">       return res;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>使用Stack 进行的非递归遍历</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; binaryTreePaths(TreeNode* root) &#123;</span><br><span class="line">    vector&lt;string&gt; res;</span><br><span class="line">    if(root == NULL) return res;</span><br><span class="line">    stack&lt;TreeNode*&gt; s;</span><br><span class="line">    stack&lt;string&gt; str_s;</span><br><span class="line">    s.push(root);</span><br><span class="line">    str_s.push(to_string(root-&gt;val));</span><br><span class="line">    string str;</span><br><span class="line">    while(!s.empty())&#123;</span><br><span class="line">        TreeNode* a = s.top();</span><br><span class="line">        str = str_s.top();</span><br><span class="line">        s.pop(); str_s.pop();</span><br><span class="line">        </span><br><span class="line">        if(a-&gt;left==NULL &amp;&amp; a-&gt;right==NULL)&#123;</span><br><span class="line">            res.push_back(str);</span><br><span class="line">            str.erase(str.end()-1);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(a-&gt;left!=NULL)&#123;</span><br><span class="line">            s.push(a-&gt;left);</span><br><span class="line">            str_s.push(str+&quot;-&gt;&quot;+to_string(a-&gt;left-&gt;val));</span><br><span class="line">        &#125;</span><br><span class="line">        if(a-&gt;right!=NULL)&#123;</span><br><span class="line">            s.push(a-&gt;right);</span><br><span class="line">            str_s.push(str+&quot;-&gt;&quot;+to_string(a-&gt;right-&gt;val));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    reverse(res.begin(),res.end());</span><br><span class="line">    return res;</span><br></pre></td></tr></table></figure></p>
+<h2 id="翻转二叉树-226-Invert-Binary-Tree"><a href="#翻转二叉树-226-Invert-Binary-Tree" class="headerlink" title="翻转二叉树 226. Invert Binary Tree"></a>翻转二叉树 226. Invert Binary Tree</h2><p><div align="center"><img src="https://raw.githubusercontent.com/junqiangwu/img_PinGo/master/img/20190410172635.png" width="300" height="400"></div></p>
+<p><strong>dfs 遍历每一个节点  进行交换</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">TreeNode* invertTree(TreeNode* root) </span><br><span class="line">&#123;</span><br><span class="line">    dfs_invert(root);</span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br><span class="line">void dfs_invert(TreeNode* root)</span><br><span class="line">&#123;</span><br><span class="line">    if(root == NULL)  return;</span><br><span class="line">    </span><br><span class="line">    invertTree(root -&gt; left);</span><br><span class="line">    invertTree(root -&gt; right);</span><br><span class="line">    // swap after the left subtree and right subtree has been done</span><br><span class="line">    swap(root -&gt; left, root -&gt; right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>queue_BFS</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">TreeNode* invertTree(TreeNode* root) </span><br><span class="line"> &#123;</span><br><span class="line">      if(!root) return NULL;</span><br><span class="line">         queue&lt;TreeNode*&gt; q;</span><br><span class="line">         q.push(root);</span><br><span class="line">         while(!q.empty()) &#123;</span><br><span class="line">             TreeNode* node = q.front();</span><br><span class="line">             q.pop();</span><br><span class="line">             #只需要交换 非叶子节点的左右孩子即可</span><br><span class="line">             if (node-&gt;left != NULL || node-&gt;right != NULL) &#123;</span><br><span class="line">                 TreeNode* temp = node-&gt;left;</span><br><span class="line">                 node-&gt;left = node-&gt;right;</span><br><span class="line">                 node-&gt;right = temp;</span><br><span class="line">             &#125;</span><br><span class="line">             if (node-&gt;left)</span><br><span class="line">                 q.push(node-&gt;left);</span><br><span class="line">             if (node-&gt;right)</span><br><span class="line">                 q.push(node-&gt;right);</span><br><span class="line">         &#125;</span><br><span class="line">     return root;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -692,7 +668,7 @@ return max(left, right) + 1
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -813,7 +789,7 @@ return max(left, right) + 1
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建二叉树"><span class="nav-number">1.</span> <span class="nav-text">构建二叉树</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Recursive-Rules"><span class="nav-number"></span> <span class="nav-text">Recursive Rules:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，"><span class="nav-number"></span> <span class="nav-text">索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#返回：如果都是Balanced的，返回True，不然返回False"><span class="nav-number"></span> <span class="nav-text">返回：如果都是Balanced的，返回True，不然返回False</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#111-Minimum-Depth-of-Binary-Tree"><span class="nav-number">1.</span> <span class="nav-text">111. Minimum Depth of Binary Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建二叉树-1"><span class="nav-number">2.</span> <span class="nav-text">构建二叉树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recursive-Rules-1"><span class="nav-number"></span> <span class="nav-text">Recursive Rules:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，-1"><span class="nav-number"></span> <span class="nav-text">索取：Node的左孩子是不是全部是Balanced，Node的右孩子是不是全部是Balanced的，</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#返回：如果都是Balanced的，返回True，不然返回False-1"><span class="nav-number"></span> <span class="nav-text">返回：如果都是Balanced的，返回True，不然返回False</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#111-Minimum-Depth-of-Binary-Tree-1"><span class="nav-number">1.</span> <span class="nav-text">111. Minimum Depth of Binary Tree</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建二叉树"><span class="nav-number">1.</span> <span class="nav-text">构建二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#104-Maximum-Depth-of-Binary-Tree"><span class="nav-number">2.</span> <span class="nav-text">104. Maximum Depth of Binary Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#110-Balanced-Binary-Tree"><span class="nav-number">3.</span> <span class="nav-text">110. Balanced Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Recursive-Rules"><span class="nav-number">3.1.</span> <span class="nav-text">Recursive Rules:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#111-Minimum-Depth-of-Binary-Tree"><span class="nav-number">4.</span> <span class="nav-text">111. Minimum Depth of Binary Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#112-Path-Sum-路径数值和"><span class="nav-number">5.</span> <span class="nav-text">112. Path Sum   路径数值和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通的dfs-递归"><span class="nav-number">5.1.</span> <span class="nav-text">普通的dfs 递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用栈实现的非递归dfs"><span class="nav-number">5.2.</span> <span class="nav-text">利用栈实现的非递归dfs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出Tree的路径value-257-Binary-Tree-Paths"><span class="nav-number">6.</span> <span class="nav-text">输出Tree的路径value 257. Binary Tree Paths</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#翻转二叉树-226-Invert-Binary-Tree"><span class="nav-number">7.</span> <span class="nav-text">翻转二叉树 226. Invert Binary Tree</span></a></li></ol></div>
             
 
           </div>
@@ -854,7 +830,7 @@ return max(left, right) + 1
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.4k</span>
+    <span title="Site words total count">19.6k</span>
   
 </div>
 
