@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="JunQW'S BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="开始使用Screen 直接在命令行键入screen命令 Screen命令后跟你要执行的程序。 在当前screen窗口中键入C+a c，即Ctrl键+a键，之后再按下c键，screen在该会话内生成一个新的窗口并切换到该窗口。123451、 [root@tivf06 ~]# screen2、 [root@tivf06 ~]# screen vi test.c3、 [root@tivf06 ~]# s">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" Linux 开发工具配置">
+<meta property="og:url" content="http://www.junqw.top/2019/04/20/Linux-开发工具配置/index.html">
+<meta property="og:site_name" content="JunQW&#39;S BLOG">
+<meta property="og:description" content="开始使用Screen 直接在命令行键入screen命令 Screen命令后跟你要执行的程序。 在当前screen窗口中键入C+a c，即Ctrl键+a键，之后再按下c键，screen在该会话内生成一个新的窗口并切换到该窗口。123451、 [root@tivf06 ~]# screen2、 [root@tivf06 ~]# screen vi test.c3、 [root@tivf06 ~]# s">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://xiaozhou.net/pics/iterm/skm.gif">
+<meta property="og:updated_time" content="2019-06-02T16:07:30.118Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" Linux 开发工具配置">
+<meta name="twitter:description" content="开始使用Screen 直接在命令行键入screen命令 Screen命令后跟你要执行的程序。 在当前screen窗口中键入C+a c，即Ctrl键+a键，之后再按下c键，screen在该会话内生成一个新的窗口并切换到该窗口。123451、 [root@tivf06 ~]# screen2、 [root@tivf06 ~]# screen vi test.c3、 [root@tivf06 ~]# s">
+<meta name="twitter:image" content="https://xiaozhou.net/pics/iterm/skm.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":4},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.junqw.top/2019/04/20/Linux-开发工具配置/">
+
+
+
+
+
+  <title> Linux 开发工具配置 | JunQW'S BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <!--Github start-->
+<a href="https://github.com/junqiangwu" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <!--Github start--> 
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JunQW'S BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不知则问，不能则学！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.junqw.top/2019/04/20/Linux-开发工具配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunQW">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JunQW'S BLOG">
+    </span>
+
+    
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"> Linux 开发工具配置</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-20T11:00:04+08:00">
+                2019-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+          
+          
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/20/Linux-开发工具配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/20/Linux-开发工具配置/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+              <span class="post-meta-divider">|</span>
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="开始使用Screen"><a href="#开始使用Screen" class="headerlink" title="开始使用Screen"></a>开始使用Screen</h2><ol>
+<li>直接在命令行键入screen命令</li>
+<li>Screen命令后跟你要执行的程序。</li>
+<li>在当前screen窗口中键入C+a c，即Ctrl键+a键，之后再按下c键，screen在该会话内生成一个新的窗口并切换到该窗口。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、 [root@tivf06 ~]# screen</span><br><span class="line"></span><br><span class="line">2、 [root@tivf06 ~]# screen vi test.c</span><br><span class="line"></span><br><span class="line">3、 [root@tivf06 ~]# screen —S name</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>暂时断开连接 detach  c+a d</strong></p>
+<blockquote>
+<p>你可以不中断screen窗口中程序的运行而暂时断开（detach）screen会话，并在随后时间重新连接（attach）该会话，重新控制各窗口中运行的程序。</p>
+</blockquote>
+<blockquote>
+<p>screen把C-a看作是screen命令的开始</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">screen -ls  显示所有screen窗口id</span><br><span class="line"></span><br><span class="line">C-a k	杀掉当前窗口</span><br><span class="line">C-a d   断开</span><br><span class="line">C-a c   新建窗口</span><br><span class="line">C-a p   切换上一个窗口</span><br><span class="line">C-a n   切换下一个窗口</span><br><span class="line"></span><br><span class="line">![image](https://www.ibm.com/developerworks/cn/linux/l-cn-screen/keybindings.jpg)</span><br><span class="line"></span><br><span class="line">```py</span><br><span class="line"></span><br><span class="line">screen -r &lt;screen_pid&gt;  重新连接</span><br><span class="line"></span><br><span class="line"># Detached 断开的screen窗口</span><br><span class="line">[root@tivf18 root]# screen –ls</span><br><span class="line">There are screens on:</span><br><span class="line">        8736.pts-1.tivf18       (Detached)</span><br><span class="line">        8462.pts-0.tivf18       (Detached)</span><br><span class="line">2 Sockets in /root/.screen.</span><br><span class="line"></span><br><span class="line"># 如果窗口被杀掉(dead)，使用screen -wipe命令清除该会话：</span><br><span class="line"></span><br><span class="line">[root@tivf18 root]# screen -ls  </span><br><span class="line">There are screens on:</span><br><span class="line">        8736.pts-1.tivf18       (Detached)</span><br><span class="line">        8462.pts-0.tivf18       (Dead ???)</span><br><span class="line">Remove dead screens with &apos;screen -wipe&apos;.</span><br></pre></td></tr></table></figure>
+<h2 id="logging的框架"><a href="#logging的框架" class="headerlink" title="logging的框架"></a>logging的框架</h2><ol>
+<li><p>Loggers: 可供程序直接调用的接口，app通过调用提供的api来记录日志</p>
+</li>
+<li><p>Handlers: (句柄)决定Log输出的目的地</p>
+</li>
+<li><p>Filters:对日志信息进行过滤，提供更细粒度的日志是否输出的判断</p>
+</li>
+<li><p>Formatters: 格式化打印Log，制定打印的格式布局</p>
+</li>
+</ol>
+<ul>
+<li><p>Log级别</p>
+</li>
+<li><p>CRITICAL    50</p>
+</li>
+<li>ERROR      40</li>
+<li>WARNING   30</li>
+<li>INFO        20</li>
+<li>DEBUG      10</li>
+<li>NOTSET     0</li>
+<li></li>
+</ul>
+<h2 id="远程挂载-sshfs"><a href="#远程挂载-sshfs" class="headerlink" title="远程挂载  sshfs"></a>远程挂载  sshfs</h2><p>brew install Caskroom/cask/osxfuse<br>brew install sshfs</p>
+<p>sshfs -C -o reconnect user@hostname:remote_dir local_dir</p>
+<p>之后你就可以去你的目录下看看是否挂载成功了,这样你就可以用本地编辑器打开敲写代码了，说明一下，你还可以用本地的软件，比如npm</p>
+<p>相关问题</p>
+<p>当我们的 mac 网络断开或者休眠或重启, 回来时发现挂载的失败了, 进入目录会提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ls local_dir </span><br><span class="line">ls: local_dir: Input/output error</span><br><span class="line">如果我们想取消挂载, 又会提示</span><br><span class="line"></span><br><span class="line">$umount local_dir</span><br><span class="line">umount: local_dir: not currently mounted</span><br><span class="line">这个时候, 我们不得不关闭进程了, 可以先通过命令查看进程</span><br><span class="line"></span><br><span class="line">pgrep -lf sshfs</span><br><span class="line">然后杀掉相应的挂载进程, 或者直接杀掉所有挂载进程</span><br><span class="line"></span><br><span class="line">pkill -9 sshfs </span><br><span class="line">之后重新挂载响应的目录即可</span><br></pre></td></tr></table></figure>
+<h2 id="ydict"><a href="#ydict" class="headerlink" title="ydict"></a>ydict</h2><p><code>ydict</code> 是一个用来在命令行方式下使用的有道词典，能在命令行下快速的帮你查询单词，不用打开浏览器，输入网址等一系列繁琐的操作。输入命令即可快速搞定!</p>
+<p>呃…… 这个工具，也是Tim哥写的开源项目，怎么样？惊喜不惊喜？</p>
+<p>项目地址：<a href="https://github.com/TimothyYe/ydict" target="_blank" rel="noopener">https://github.com/TimothyYe/ydict</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ydict 在Mac OS下的安装:</span></span><br><span class="line"></span><br><span class="line">brew tap timothyye/tap</span><br><span class="line">brew install timothyye/tap/ydict</span><br></pre></td></tr></table></figure>
+<h2 id="skm"><a href="#skm" class="headerlink" title="skm"></a>skm</h2><p>SKM，全称SSH Key Manager，是一个在命令行下帮助你方便的管理和切换多个SSH key的工具。想象一下，如果你是运维人员，不同的服务器也许有不同的SSH Key来登录，又或者你是一个开发人员，有自己的SSH Key，用来开发和提交代码到自己的git仓库，或许还有公司的SSH Key，用来开发公司的项目。基于以上的情况，需要经常切换SSH Key。而用上了SKM，就方便多了，使用方法类似于 nvm，方便的创建，管理，切换系统当前默认SSH Key，用起来简直不要太爽！</p>
+<p><img src="https://xiaozhou.net/pics/iterm/skm.gif" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap timothyye/tap</span><br><span class="line">brew install timothyye/tap/skm</span><br></pre></td></tr></table></figure>
+<h2 id="Zsh"><a href="#Zsh" class="headerlink" title="Zsh"></a>Zsh</h2><blockquote>
+<p>The last shell you’ll ever need!</p>
+</blockquote>
+<p>既然有了Zsh，那Oh My Zsh又是啥呢？因为 zsh 的默认配置极其复杂繁琐，让人望而却步，直到有了Oh My Zsh这个开源项目，让zsh配置降到0门槛。而且它完全兼容 bash 。所以，我们可以理解为Oh My Zsh是一个方便你配置和使用Zsh的一个开源工具。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/shells</span><br><span class="line"></span><br><span class="line"><span class="comment"># List of acceptable shells for chpass(1).</span></span><br><span class="line"><span class="comment"># Ftpd will not allow users to connect who are not using</span></span><br><span class="line"><span class="comment"># one of these shells.</span></span><br><span class="line"></span><br><span class="line">/bin/bash</span><br><span class="line">/bin/csh</span><br><span class="line">/bin/ksh</span><br><span class="line">/bin/sh</span><br><span class="line">/bin/tcsh</span><br><span class="line">/bin/zsh</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong><br>有<code>/bin/zsh</code>表明已经预装zsh了，没有的话，可以通过命令 <code>brew install zsh</code> 来安装。接下来，我们需要安装的是OhMyZsh，OhMyZsh的安装也比较简单，官网有一键安装脚本。默认安装过后，使用的是<code>robbyrussell</code>主题，你可以在这里找到各种主题。</p>
+<p>找到一款你喜欢的主题，把主题文件下载到<code>~/.oh-my-zsh/themes</code> 里面，然后修改<code>~/.zshrc</code> 文件，配置好主题名字即可：</p>
+<p><strong>主题配置</strong><br><code>ZSH_THEME=&quot;steeef&quot;</code></p>
+<p><code>跟Bash一样，Bash的配置文件叫做.bashrc，Zsh的配置文件，也放在用户当前目录，叫做.zshrc。</code></p>
+<p><strong>快捷键配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">通过在.zshrc中配置alias，可以方便的为其他的命令设置别名，这是个很不错的功能。因为我懒，平时甚至连敲命令也想偷懒，于是，我设置了很多alias。(参考我的.zshrc配置文件)</span><br><span class="line"></span><br><span class="line">比如跟git相关的：</span><br><span class="line"></span><br><span class="line">alias gs=&quot;git status&quot;</span><br><span class="line">alias gsm=&quot;git summary&quot;</span><br><span class="line">alias ga=&apos;git add&apos;</span><br><span class="line">alias gd=&apos;git diff&apos;</span><br><span class="line">alias gf=&apos;git fetch&apos;</span><br><span class="line">alias grv=&apos;git remote -v&apos;</span><br><span class="line">alias grb=&apos;git rebase&apos;</span><br><span class="line">alias gbr=&apos;git branch&apos;</span><br><span class="line">alias gpl=&quot;git pull&quot;</span><br><span class="line">alias gps=&quot;git push&quot;</span><br><span class="line">alias gco=&quot;git checkout&quot;</span><br><span class="line">alias gl=&quot;git log&quot;</span><br><span class="line">alias gc=&quot;git commit -m&quot;</span><br><span class="line">alias gm=&quot;git merge&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong>插件管理</strong></p>
+<ol>
+<li>sublime</li>
+<li>web-search</li>
+<li>zsh-autosuggestions</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 返回上一级</span></span><br><span class="line">直接输入.. 和 … 可以快速切换到上层和上上层目录</span><br><span class="line">直接输入n+<span class="number">1</span>个点，可以往上层跳转 n 层</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出最近目录</span></span><br><span class="line">d 命令 </span><br><span class="line">可以列出最近目录,选择数字即可跳转</span><br></pre></td></tr></table></figure>
+<h2 id="Neovim"><a href="#Neovim" class="headerlink" title="Neovim"></a>Neovim</h2><ol>
+<li>安装neovim 并支持python</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install neovim</span><br><span class="line"></span><br><span class="line">brew install python3</span><br><span class="line">pip3 install neovim --upgrade</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>他说明文档中的 host_prog 地址直接填写python的执行路径即可<br>在 <code>~/.config/nvim/init.vim</code> 中添加<br><code>let g:python3_host_prog = &#39;/usr/local/bin/python3&#39;</code></li>
+</ol>
+<h2 id="sshuttle跳转"><a href="#sshuttle跳转" class="headerlink" title="sshuttle跳转"></a>sshuttle跳转</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">开启Pycharm 的远程SSH Terminal 后，就可以同时使用IDE和Shell编程--&gt;在Pycharm界面依次选择Tools-&gt;Start SSH Session;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个命令是ssh 到跳转机，然后链接另一个机器的命令：</span></span><br><span class="line"><span class="comment"># 相当于在local 和 10.124.153.*** 之间通过 中间机器 打通一个隧道</span></span><br><span class="line"><span class="comment"># 适用与可以登陆到中间机器，而只有中间机器可以登陆到另一个机器</span></span><br><span class="line"></span><br><span class="line">sshuttle -r name@host <span class="number">10.124</span><span class="number">.153</span>.***</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Private Key 指本地的秘钥 ，这个方法需要remote有记录local的公钥</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Key Pair 是指将你的pub_key记录在远程机器上，每次ssh链接时，你会通过本地秘钥加密一段data送到远端，如果远端适用pub_key可以解析出来这段data，就证明了你的数据，就可以不用密码进行登陆；</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+    
+    <div>
+      
+        
+
+<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            
+            ---------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读---------------
+        
+        </div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/14/vector/" rel="next" title="vector ">
+                <i class="fa fa-chevron-left"></i> vector 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/20/Mac-开发工具配置/" rel="prev" title=" Mac 开发工具配置 ">
+                 Mac 开发工具配置  <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="JunQW">
+            
+              <p class="site-author-name" itemprop="name">JunQW</p>
+              <p class="site-description motion-element" itemprop="description">一直上进的小脑斧~~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/junqiangwu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://wujunqiang@bupt.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/junqing_wu" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ding-ge-68-17" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://study.163.com/" title="网易云课堂" target="_blank">网易云课堂</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰" target="_blank">廖雪峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://open.163.com/" title="网易公开课" target="_blank">网易公开课</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cs231n.github.io/" title="CS231n" target="_blank">CS231n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cvrr.ucsd.edu/vivachallenge/index.php/traffic-light/traffic-light-detection/" title="Traffic-Light Data" target="_blank">Traffic-Light Data</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.cvlibs.net/datasets/kitti/" title="KITTI" target="_blank">KITTI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://handong1587.github.io/deep_learning/2015/10/09/object-detection.html" title="Object Detection" target="_blank">Object Detection</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leancloud.cn/" title="LeanCloud" target="_blank">LeanCloud</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始使用Screen"><span class="nav-number">1.</span> <span class="nav-text">开始使用Screen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logging的框架"><span class="nav-number">2.</span> <span class="nav-text">logging的框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程挂载-sshfs"><span class="nav-number">3.</span> <span class="nav-text">远程挂载  sshfs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ydict"><span class="nav-number">4.</span> <span class="nav-text">ydict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skm"><span class="nav-number">5.</span> <span class="nav-text">skm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zsh"><span class="nav-number">6.</span> <span class="nav-text">Zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neovim"><span class="nav-number">7.</span> <span class="nav-text">Neovim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sshuttle跳转"><span class="nav-number">8.</span> <span class="nav-text">sshuttle跳转</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunQW</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">24k</span>
+  
+</div>
+
+<!-- 取消底部
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+-->
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Ni8yGTz6Ry2KizuBQRG7pusH-gzGzoHsz',
+        appKey: 'uGlqMJCfILRM9BjRJ0blncv1',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","display":{"position":"right","width":70,"height":100},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
